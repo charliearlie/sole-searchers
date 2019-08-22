@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
+import Header from './header/header';
 
 const theme = {
   red: '#E44847',
@@ -21,13 +22,14 @@ const theme = {
   ipadWidth: '1024px',
 };
 
-class Page extends Component {
+class Page extends React.Component {
   render() {
     return (
       <ThemeProvider theme={theme}>
         <>
           <GlobalStyle />
           <StyledPage>
+            <Header />
             <Inner>{this.props.children}</Inner>
           </StyledPage>
         </>
@@ -41,14 +43,14 @@ class Page extends Component {
  */
 
 const StyledPage = styled.div`
-  background: ${props => props.theme.offWhite};
+  background: white;
   color: ${props => props.theme.black};
 `;
 
 const Inner = styled.div`
   margin: auto;
   max-width: ${props => props.theme.maxWidth};
-  padding-top: 15rem;
+  padding-top: 106px;
 
   p::selection,
   div::selection,
@@ -59,13 +61,12 @@ const Inner = styled.div`
     background: ${({ theme }) => theme.red};
     color: white;
   }
-
-  @media (max-width: 600px) {
-    padding-top: 13rem;
-  }
 `;
 
 const GlobalStyle = createGlobalStyle`
+@import url('https://fonts.googleapis.com/css?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
 html {
   box-sizing: border-box;
   font-size: 10px;
@@ -74,12 +75,12 @@ html {
   box-sizing: inherit;
 }
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   padding: 0;
   margin: 0;
   font-size: 1.5rem;
   line-height: 2;
-  background: ${theme.offWhite};
+  background: white;
   color: ${theme.black};
 }
 `;
