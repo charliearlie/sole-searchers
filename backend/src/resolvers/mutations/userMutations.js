@@ -48,3 +48,15 @@ async function signIn(parent, { email, password }, ctx, info) {
 
   return user;
 }
+
+function signOut(parent, args, ctx, info) {
+  ctx.response.clearCookie("token");
+
+  return { message: "Sucessfully signed out" };
+}
+
+module.exports = {
+  signUp,
+  signIn,
+  signOut
+};

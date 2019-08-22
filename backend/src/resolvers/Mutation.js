@@ -1,7 +1,8 @@
-const { signIn, signUp } = require("./mutations/userMutations");
+const { signIn, signOut, signUp } = require("./mutations/userMutations");
 
 const Mutations = {
   signIn,
+  signOut,
   signUp
 };
 
