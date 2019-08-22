@@ -1,6 +1,7 @@
-const { signUp } = require("./mutations/userMutations");
+const { signIn, signUp } = require("./mutations/userMutations");
 
 const Mutations = {
+  signIn,
   signUp
 };
 
