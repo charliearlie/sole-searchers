@@ -15,5 +15,5 @@ type User {
   resetToken: String
   resetTokenExpiry: Float
   active: Boolean!
-  permissions: [Permission]
+  permissions: [Permission] @scalarList(strategy: RELATION)
 }
