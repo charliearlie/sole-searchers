@@ -1,3 +1,12 @@
+enum Permission {
+  ADMIN
+  USER
+  LISTINGCREATE
+  LISTINGUPDATE
+  LISTINGDELETE
+  PERMISSIONUPDATE
+}
+
 type User {
   id: ID! @id
   name: String!
@@ -6,4 +15,5 @@ type User {
   resetToken: String
   resetTokenExpiry: Float
   active: Boolean!
+  permissions: [Permission]
 }
