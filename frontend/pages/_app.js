@@ -1,6 +1,7 @@
 import App, { Container } from 'next/app';
 import { ApolloProvider } from '@apollo/react-hooks';
 import withApollo from '../util/with-apollo';
+import GlobalState from '../context/global-state';
 import Page from '../components/page';
 
 class MyApp extends App {
@@ -18,9 +19,11 @@ class MyApp extends App {
     return (
       <Container>
         <ApolloProvider client={apolloClient}>
-          <Page>
-            <Component {...pageProps} />
-          </Page>
+          <GlobalState>
+            <Page>
+              <Component {...pageProps} />
+            </Page>
+          </GlobalState>
         </ApolloProvider>
       </Container>
     );
