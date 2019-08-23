@@ -17,3 +17,24 @@ type User {
   active: Boolean!
   permissions: [Permission] @scalarList(strategy: RELATION)
 }
+
+type Item {
+  id: ID! @id
+  title: String!
+  description: String!
+  image: String
+  largeImage: String
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  price: Int!
+  sizes: [Int] @scalarList(strategy: RELATION)
+  stock: Int!
+  categories: [Category] @scalarList(strategy: RELATION)
+}
+
+type Category {
+  id: ID! @id
+  title: String!
+  similarCategories: [Category] @scalarList(strategy: RELATION)
+  popularity: Int
+}
