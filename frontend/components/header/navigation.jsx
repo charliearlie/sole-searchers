@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import CurrencySelector from '../common/currency-selector';
 import Basket from '../../assets/svg/basket.svg';
 
 const Navigation = () => {
   return (
     <Nav>
-      <a href="#">Currency</a>
+      <CurrencySelector />
       <a href="#">Login / Register</a>
       <Line />
       <button>
@@ -38,6 +39,14 @@ const Nav = styled.nav`
     padding: 0;
     width: 24px;
   }
+
+  @media (max-width: 600px) {
+    align-items: center;
+    button {
+      height: 18px;
+      width: 18px;
+    }
+  }
 `;
 
 const Line = styled.span`
@@ -46,4 +55,8 @@ const Line = styled.span`
   margin-top: 4px;
   opacity: 0.7;
   width: 2px;
+
+  @media (max-width: 600px) {
+    display: none;
+  }
 `;

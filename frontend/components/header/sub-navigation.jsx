@@ -27,7 +27,8 @@ const Nav = styled.nav`
 
   a {
     color: ${({ theme }) => theme.offWhite};
-    margin-right: 15px;
+    font-size: 1.3rem;
+    margin-right: 20px;
     opacity: 0.6;
     text-decoration: none;
     text-transform: uppercase;
@@ -35,6 +36,17 @@ const Nav = styled.nav`
 
     &:last-of-type {
       margin-right: 0;
+    }
+  }
+
+  @media (max-width: 1025px) {
+    justify-content: flex-start;
+    padding: 0 20px;
+
+    a {
+      &:last-of-type {
+        margin-right: 20px;
+      }
     }
   }
 `;

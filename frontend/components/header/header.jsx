@@ -59,4 +59,15 @@ const NavigationWrapper = styled.div`
     letter-spacing: 7px;
     transform: skew(-5deg);
   }
+
+  @media (max-width: 1100px) {
+    padding: 0 10px;
+  }
+
+  @media (max-width: 600px) {
+    .logo {
+      font-size: 15px;
+      letter-spacing: 2px;
+    }
+  }
 `;
