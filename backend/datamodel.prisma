@@ -30,11 +30,19 @@ type Item {
   sizes: [Int] @scalarList(strategy: RELATION)
   stock: Int!
   categories: [Category] @scalarList(strategy: RELATION)
+  brand: Brand
 }
 
 type Category {
   id: ID! @id
   title: String!
   similarCategories: [Category] @scalarList(strategy: RELATION)
+  popularity: Int
+}
+
+type Brand {
+  id: ID! @id
+  logo: String!
+  name: String!
   popularity: Int
 }
