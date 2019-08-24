@@ -1,4 +1,6 @@
 import React from 'react';
+import { useCookies } from 'react-cookie';
+import { currencyReducer, CHANGE_CURRENCY } from './reducers';
 
 // This will probably become a user context but for now only currency is needed
 export const CurrencyContext = React.createContext();
@@ -7,7 +9,7 @@ export const CurrencyContext = React.createContext();
 function CurrencyProvider(props) {
   const [cookies, setCookie] = useCookies([]);
   const userCurrency = cookies['currency'] || 'USD';
-  const [currency, dispatch] = useReducer(currencyReducer, userCurrency);
+  const [currency, dispatch] = React.useReducer(currencyReducer, userCurrency);
 
   const changeCurrency = currency => {
     setCookie('currency', currency);
