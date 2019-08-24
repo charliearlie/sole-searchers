@@ -17,7 +17,9 @@ function CurrencySelector() {
     return (
       <Menu>
         {currencies.map(currency => (
-          <button onClick={() => changeCurrency(currency)}>{currency}</button>
+          <button key={currency} onClick={() => changeCurrency(currency)}>
+            {currency}
+          </button>
         ))}
       </Menu>
     );

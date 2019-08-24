@@ -1,7 +1,6 @@
-import React from 'react';
 import styled from 'styled-components';
+import Basket from '../basket';
 import CurrencySelector from '../common/currency-selector';
-import Basket from '../../assets/svg/basket.svg';
 
 const Navigation = () => {
   return (
@@ -9,9 +8,7 @@ const Navigation = () => {
       <CurrencySelector />
       <a href="#">Login / Register</a>
       <Line />
-      <button>
-        <Basket />
-      </button>
+      <Basket />
     </Nav>
   );
 };
