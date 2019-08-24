@@ -27,10 +27,12 @@ type Item {
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
   price: Int!
+  discountedPrice: Int
   sizes: [Int] @scalarList(strategy: RELATION)
   stock: Int!
   categories: [Category] @scalarList(strategy: RELATION)
   brand: Brand
+  collection: Collection
 }
 
 type Category {
@@ -45,4 +47,11 @@ type Brand {
   logo: String
   name: String!
   popularity: Int
+}
+
+type Collection {
+  id: ID! @id
+  name: String!
+  brand: Brand
+  website: String
 }

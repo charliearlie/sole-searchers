@@ -1,11 +1,15 @@
 # source: https://eu1.prisma.sh/charlie-waite-c4907e/sole-searchers/dev
-# timestamp: Fri Aug 23 2019 18:08:35 GMT+0100 (British Summer Time)
+# timestamp: Sat Aug 24 2019 10:23:18 GMT+0100 (British Summer Time)
 
 type AggregateBrand {
   count: Int!
 }
 
 type AggregateCategory {
+  count: Int!
+}
+
+type AggregateCollection {
   count: Int!
 }
 
@@ -677,6 +681,263 @@ input CategoryWhereUniqueInput {
   id: ID
 }
 
+type Collection implements Node {
+  id: ID!
+  name: String!
+  brand: Brand
+  website: String
+}
+
+"""A connection to a list of items."""
+type CollectionConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [CollectionEdge]!
+  aggregate: AggregateCollection!
+}
+
+input CollectionCreateInput {
+  id: ID
+  name: String!
+  website: String
+  brand: BrandCreateOneInput
+}
+
+input CollectionCreateOneInput {
+  create: CollectionCreateInput
+  connect: CollectionWhereUniqueInput
+}
+
+"""An edge in a connection."""
+type CollectionEdge {
+  """The item at the end of the edge."""
+  node: Collection!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum CollectionOrderByInput {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  website_ASC
+  website_DESC
+}
+
+type CollectionPreviousValues {
+  id: ID!
+  name: String!
+  website: String
+}
+
+type CollectionSubscriptionPayload {
+  mutation: MutationType!
+  node: Collection
+  updatedFields: [String!]
+  previousValues: CollectionPreviousValues
+}
+
+input CollectionSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [CollectionSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [CollectionSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [CollectionSubscriptionWhereInput!]
+
+  """The subscription event gets dispatched when it's listed in mutation_in"""
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: CollectionWhereInput
+}
+
+input CollectionUpdateDataInput {
+  name: String
+  website: String
+  brand: BrandUpdateOneInput
+}
+
+input CollectionUpdateInput {
+  name: String
+  website: String
+  brand: BrandUpdateOneInput
+}
+
+input CollectionUpdateManyMutationInput {
+  name: String
+  website: String
+}
+
+input CollectionUpdateOneInput {
+  create: CollectionCreateInput
+  connect: CollectionWhereUniqueInput
+  disconnect: Boolean
+  delete: Boolean
+  update: CollectionUpdateDataInput
+  upsert: CollectionUpsertNestedInput
+}
+
+input CollectionUpsertNestedInput {
+  update: CollectionUpdateDataInput!
+  create: CollectionCreateInput!
+}
+
+input CollectionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [CollectionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [CollectionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [CollectionWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  name: String
+
+  """All values that are not equal to given value."""
+  name_not: String
+
+  """All values that are contained in given list."""
+  name_in: [String!]
+
+  """All values that are not contained in given list."""
+  name_not_in: [String!]
+
+  """All values less than the given value."""
+  name_lt: String
+
+  """All values less than or equal the given value."""
+  name_lte: String
+
+  """All values greater than the given value."""
+  name_gt: String
+
+  """All values greater than or equal the given value."""
+  name_gte: String
+
+  """All values containing the given string."""
+  name_contains: String
+
+  """All values not containing the given string."""
+  name_not_contains: String
+
+  """All values starting with the given string."""
+  name_starts_with: String
+
+  """All values not starting with the given string."""
+  name_not_starts_with: String
+
+  """All values ending with the given string."""
+  name_ends_with: String
+
+  """All values not ending with the given string."""
+  name_not_ends_with: String
+  website: String
+
+  """All values that are not equal to given value."""
+  website_not: String
+
+  """All values that are contained in given list."""
+  website_in: [String!]
+
+  """All values that are not contained in given list."""
+  website_not_in: [String!]
+
+  """All values less than the given value."""
+  website_lt: String
+
+  """All values less than or equal the given value."""
+  website_lte: String
+
+  """All values greater than the given value."""
+  website_gt: String
+
+  """All values greater than or equal the given value."""
+  website_gte: String
+
+  """All values containing the given string."""
+  website_contains: String
+
+  """All values not containing the given string."""
+  website_not_contains: String
+
+  """All values starting with the given string."""
+  website_starts_with: String
+
+  """All values not starting with the given string."""
+  website_not_starts_with: String
+
+  """All values ending with the given string."""
+  website_ends_with: String
+
+  """All values not ending with the given string."""
+  website_not_ends_with: String
+  brand: BrandWhereInput
+}
+
+input CollectionWhereUniqueInput {
+  id: ID
+}
+
 scalar DateTime
 
 type Item implements Node {
@@ -688,10 +949,12 @@ type Item implements Node {
   createdAt: DateTime!
   updatedAt: DateTime!
   price: Int!
+  discountedPrice: Int
   sizes: [Int!]!
   stock: Int!
   categories(where: CategoryWhereInput, orderBy: CategoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Category!]
   brand: Brand
+  collection: Collection
 }
 
 """A connection to a list of items."""
@@ -711,10 +974,12 @@ input ItemCreateInput {
   image: String
   largeImage: String
   price: Int!
+  discountedPrice: Int
   stock: Int!
   sizes: ItemCreatesizesInput
   categories: CategoryCreateManyInput
   brand: BrandCreateOneInput
+  collection: CollectionCreateOneInput
 }
 
 input ItemCreatesizesInput {
@@ -747,6 +1012,8 @@ enum ItemOrderByInput {
   updatedAt_DESC
   price_ASC
   price_DESC
+  discountedPrice_ASC
+  discountedPrice_DESC
   stock_ASC
   stock_DESC
 }
@@ -760,6 +1027,7 @@ type ItemPreviousValues {
   createdAt: DateTime!
   updatedAt: DateTime!
   price: Int!
+  discountedPrice: Int
   sizes: [Int!]!
   stock: Int!
 }
@@ -807,10 +1075,12 @@ input ItemUpdateInput {
   image: String
   largeImage: String
   price: Int
+  discountedPrice: Int
   stock: Int
   sizes: ItemUpdatesizesInput
   categories: CategoryUpdateManyInput
   brand: BrandUpdateOneInput
+  collection: CollectionUpdateOneInput
 }
 
 input ItemUpdateManyMutationInput {
@@ -819,6 +1089,7 @@ input ItemUpdateManyMutationInput {
   image: String
   largeImage: String
   price: Int
+  discountedPrice: Int
   stock: Int
   sizes: ItemUpdatesizesInput
 }
@@ -1102,6 +1373,28 @@ input ItemWhereInput {
 
   """All values greater than or equal the given value."""
   price_gte: Int
+  discountedPrice: Int
+
+  """All values that are not equal to given value."""
+  discountedPrice_not: Int
+
+  """All values that are contained in given list."""
+  discountedPrice_in: [Int!]
+
+  """All values that are not contained in given list."""
+  discountedPrice_not_in: [Int!]
+
+  """All values less than the given value."""
+  discountedPrice_lt: Int
+
+  """All values less than or equal the given value."""
+  discountedPrice_lte: Int
+
+  """All values greater than the given value."""
+  discountedPrice_gt: Int
+
+  """All values greater than or equal the given value."""
+  discountedPrice_gte: Int
   stock: Int
 
   """All values that are not equal to given value."""
@@ -1128,6 +1421,7 @@ input ItemWhereInput {
   categories_some: CategoryWhereInput
   categories_none: CategoryWhereInput
   brand: BrandWhereInput
+  collection: CollectionWhereInput
 }
 
 input ItemWhereUniqueInput {
@@ -1144,26 +1438,32 @@ type Mutation {
   createUser(data: UserCreateInput!): User!
   createItem(data: ItemCreateInput!): Item!
   createBrand(data: BrandCreateInput!): Brand!
+  createCollection(data: CollectionCreateInput!): Collection!
   createCategory(data: CategoryCreateInput!): Category!
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
   updateItem(data: ItemUpdateInput!, where: ItemWhereUniqueInput!): Item
   updateBrand(data: BrandUpdateInput!, where: BrandWhereUniqueInput!): Brand
+  updateCollection(data: CollectionUpdateInput!, where: CollectionWhereUniqueInput!): Collection
   updateCategory(data: CategoryUpdateInput!, where: CategoryWhereUniqueInput!): Category
   deleteUser(where: UserWhereUniqueInput!): User
   deleteItem(where: ItemWhereUniqueInput!): Item
   deleteBrand(where: BrandWhereUniqueInput!): Brand
+  deleteCollection(where: CollectionWhereUniqueInput!): Collection
   deleteCategory(where: CategoryWhereUniqueInput!): Category
   upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
   upsertItem(where: ItemWhereUniqueInput!, create: ItemCreateInput!, update: ItemUpdateInput!): Item!
   upsertBrand(where: BrandWhereUniqueInput!, create: BrandCreateInput!, update: BrandUpdateInput!): Brand!
+  upsertCollection(where: CollectionWhereUniqueInput!, create: CollectionCreateInput!, update: CollectionUpdateInput!): Collection!
   upsertCategory(where: CategoryWhereUniqueInput!, create: CategoryCreateInput!, update: CategoryUpdateInput!): Category!
   updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
   updateManyItems(data: ItemUpdateManyMutationInput!, where: ItemWhereInput): BatchPayload!
   updateManyBrands(data: BrandUpdateManyMutationInput!, where: BrandWhereInput): BatchPayload!
+  updateManyCollections(data: CollectionUpdateManyMutationInput!, where: CollectionWhereInput): BatchPayload!
   updateManyCategories(data: CategoryUpdateManyMutationInput!, where: CategoryWhereInput): BatchPayload!
   deleteManyUsers(where: UserWhereInput): BatchPayload!
   deleteManyItems(where: ItemWhereInput): BatchPayload!
   deleteManyBrands(where: BrandWhereInput): BatchPayload!
+  deleteManyCollections(where: CollectionWhereInput): BatchPayload!
   deleteManyCategories(where: CategoryWhereInput): BatchPayload!
 }
 
@@ -1207,14 +1507,17 @@ type Query {
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
   items(where: ItemWhereInput, orderBy: ItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Item]!
   brands(where: BrandWhereInput, orderBy: BrandOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Brand]!
+  collections(where: CollectionWhereInput, orderBy: CollectionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Collection]!
   categories(where: CategoryWhereInput, orderBy: CategoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Category]!
   user(where: UserWhereUniqueInput!): User
   item(where: ItemWhereUniqueInput!): Item
   brand(where: BrandWhereUniqueInput!): Brand
+  collection(where: CollectionWhereUniqueInput!): Collection
   category(where: CategoryWhereUniqueInput!): Category
   usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
   itemsConnection(where: ItemWhereInput, orderBy: ItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ItemConnection!
   brandsConnection(where: BrandWhereInput, orderBy: BrandOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BrandConnection!
+  collectionsConnection(where: CollectionWhereInput, orderBy: CollectionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CollectionConnection!
   categoriesConnection(where: CategoryWhereInput, orderBy: CategoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CategoryConnection!
 
   """Fetches an object given its ID"""
@@ -1228,6 +1531,7 @@ type Subscription {
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
   item(where: ItemSubscriptionWhereInput): ItemSubscriptionPayload
   brand(where: BrandSubscriptionWhereInput): BrandSubscriptionPayload
+  collection(where: CollectionSubscriptionWhereInput): CollectionSubscriptionPayload
   category(where: CategorySubscriptionWhereInput): CategorySubscriptionPayload
 }
 

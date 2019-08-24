@@ -31,10 +31,8 @@ const Nav = styled.nav`
     background: transparent;
     border: none;
     cursor: pointer;
-    height: 24px;
     outline: none;
     padding: 0;
-    width: 24px;
   }
 
   @media (max-width: 600px) {
