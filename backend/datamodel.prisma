@@ -42,7 +42,7 @@ type Category {
 
 type Brand {
   id: ID! @id
-  logo: String!
+  logo: String
   name: String!
   popularity: Int
 }

@@ -1,5 +1,5 @@
 # source: https://eu1.prisma.sh/charlie-waite-c4907e/sole-searchers/dev
-# timestamp: Fri Aug 23 2019 12:48:28 GMT+0100 (British Summer Time)
+# timestamp: Fri Aug 23 2019 18:08:35 GMT+0100 (British Summer Time)
 
 type AggregateBrand {
   count: Int!
@@ -24,7 +24,7 @@ type BatchPayload {
 
 type Brand implements Node {
   id: ID!
-  logo: String!
+  logo: String
   name: String!
   popularity: Int
 }
@@ -41,7 +41,7 @@ type BrandConnection {
 
 input BrandCreateInput {
   id: ID
-  logo: String!
+  logo: String
   name: String!
   popularity: Int
 }
@@ -73,7 +73,7 @@ enum BrandOrderByInput {
 
 type BrandPreviousValues {
   id: ID!
-  logo: String!
+  logo: String
   name: String!
   popularity: Int
 }
