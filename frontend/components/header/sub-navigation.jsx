@@ -1,18 +1,30 @@
 import styled from 'styled-components';
+import gql from 'graphql-tag';
+import { useQuery } from '@apollo/react-hooks';
 
-const SubNavigation = () => (
-  <Nav>
-    <a href="#">Nike</a>
-    <a href="#">Adidas</a>
-    <a href="#">Reebok</a>
-    <a href="#">Puma</a>
-    <a href="#">Air Jordan</a>
-    <a href="#">Fila</a>
-    <a href="#">Converse</a>
-    <a href="#">Vans</a>
-    <a href="#">Yeezy</a>
-  </Nav>
-);
+const SubNavigation = () => {
+  const POPULAR_BRANDS_QUERY = gql`
+    query POPULAR_BRANDS_QUERY {
+      brands(orderBy: popularity_DESC) {
+        name
+      }
+    }
+  `;
+
+  const { data, error, loading } = useQuery(POPULAR_BRANDS_QUERY);
+  const { brands } = data;
+
+  if (loading) return <span>Loading...</span>;
+  return (
+    <Nav>
+      {brands.map(brand => (
+        <a key={brand.name} href="#">
+          {brand.name}
+        </a>
+      ))}
+    </Nav>
+  );
+};
 
 const Nav = styled.nav`
   display: flex;
