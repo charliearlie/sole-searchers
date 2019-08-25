@@ -19,6 +19,12 @@ type Query {
     skip: Int
     first: Int
   ): [Brand]!
+  items(
+    where: ItemWhereInput
+    orderBy: ItemOrderByInput
+    skip: Int
+    first: Int
+  ): [Item]!
 }
 
 type User {

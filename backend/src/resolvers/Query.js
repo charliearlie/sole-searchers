@@ -12,7 +12,8 @@ const Query = {
       info
     );
   },
-  brands: forwardTo("db")
+  brands: forwardTo("db"),
+  items: forwardTo("db")
 };
 
 module.exports = Query;

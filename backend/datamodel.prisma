@@ -7,6 +7,12 @@ enum Permission {
   PERMISSIONUPDATE
 }
 
+enum Gender {
+  MENS
+  WOMENS
+  UNISEX
+}
+
 type User {
   id: ID! @id
   name: String!
@@ -20,25 +26,27 @@ type User {
 
 type Item {
   id: ID! @id
-  title: String!
-  description: String!
-  image: String
-  largeImage: String
+  brand: Brand!
+  categories: [Category] @scalarList(strategy: RELATION)
+  collection: [Collection] @scalarList(strategy: RELATION)
+  colour: String!
   createdAt: DateTime! @createdAt
-  updatedAt: DateTime! @updatedAt
-  price: Int!
+  description: String!
   discountedPrice: Int
+  gender: Gender
+  images: [String] @scalarList(strategy: RELATION)
+  material: String
+  previewImage: String
+  price: Int!
   sizes: [Int] @scalarList(strategy: RELATION)
   stock: Int!
-  categories: [Category] @scalarList(strategy: RELATION)
-  brand: Brand
-  collection: Collection
+  title: String!
+  updatedAt: DateTime! @updatedAt
 }
 
 type Category {
   id: ID! @id
   title: String!
-  similarCategories: [Category] @scalarList(strategy: RELATION)
   popularity: Int
 }
 
@@ -47,11 +55,11 @@ type Brand {
   logo: String
   name: String!
   popularity: Int
+  website: String
 }
 
 type Collection {
   id: ID! @id
   name: String!
   brand: Brand
-  website: String
 }
