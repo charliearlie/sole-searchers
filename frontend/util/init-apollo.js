@@ -11,10 +11,18 @@ function create(initialState) {
     ssrMode: !isBrowser,
     link: new HttpLink({
       uri: process.env.NODE_ENV === 'development' ? endpoint : prodEndpoint,
-      credentials: 'same-origin',
+      credentials: 'include',
       fetch: !isBrowser && fetch,
     }),
     cache: new InMemoryCache().restore(initialState || {}),
+    request: operation => {
+      operation.setContext({
+        fetchOptions: {
+          credentials: 'include',
+        },
+        undefined,
+      });
+    },
   });
 }
 
