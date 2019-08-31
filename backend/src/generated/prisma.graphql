@@ -1,5 +1,5 @@
 # source: https://eu1.prisma.sh/charlie-waite-c4907e/sole-searchers/dev
-# timestamp: Sat Aug 24 2019 21:01:05 GMT+0100 (British Summer Time)
+# timestamp: Mon Aug 26 2019 20:46:47 GMT+0100 (British Summer Time)
 
 type AggregateBrand {
   count: Int!
@@ -150,13 +150,6 @@ input BrandUpdateOneInput {
   connect: BrandWhereUniqueInput
   disconnect: Boolean
   delete: Boolean
-  update: BrandUpdateDataInput
-  upsert: BrandUpsertNestedInput
-}
-
-input BrandUpdateOneRequiredInput {
-  create: BrandCreateInput
-  connect: BrandWhereUniqueInput
   update: BrandUpdateDataInput
   upsert: BrandUpsertNestedInput
 }
@@ -385,11 +378,6 @@ input CategoryCreateInput {
   popularity: Int
 }
 
-input CategoryCreateManyInput {
-  create: [CategoryCreateInput!]
-  connect: [CategoryWhereUniqueInput!]
-}
-
 """An edge in a connection."""
 type CategoryEdge {
   """The item at the end of the edge."""
@@ -412,119 +400,6 @@ type CategoryPreviousValues {
   id: ID!
   title: String!
   popularity: Int
-}
-
-input CategoryScalarWhereInput {
-  """Logical AND on all given filters."""
-  AND: [CategoryScalarWhereInput!]
-
-  """Logical OR on all given filters."""
-  OR: [CategoryScalarWhereInput!]
-
-  """Logical NOT on all given filters combined by AND."""
-  NOT: [CategoryScalarWhereInput!]
-  id: ID
-
-  """All values that are not equal to given value."""
-  id_not: ID
-
-  """All values that are contained in given list."""
-  id_in: [ID!]
-
-  """All values that are not contained in given list."""
-  id_not_in: [ID!]
-
-  """All values less than the given value."""
-  id_lt: ID
-
-  """All values less than or equal the given value."""
-  id_lte: ID
-
-  """All values greater than the given value."""
-  id_gt: ID
-
-  """All values greater than or equal the given value."""
-  id_gte: ID
-
-  """All values containing the given string."""
-  id_contains: ID
-
-  """All values not containing the given string."""
-  id_not_contains: ID
-
-  """All values starting with the given string."""
-  id_starts_with: ID
-
-  """All values not starting with the given string."""
-  id_not_starts_with: ID
-
-  """All values ending with the given string."""
-  id_ends_with: ID
-
-  """All values not ending with the given string."""
-  id_not_ends_with: ID
-  title: String
-
-  """All values that are not equal to given value."""
-  title_not: String
-
-  """All values that are contained in given list."""
-  title_in: [String!]
-
-  """All values that are not contained in given list."""
-  title_not_in: [String!]
-
-  """All values less than the given value."""
-  title_lt: String
-
-  """All values less than or equal the given value."""
-  title_lte: String
-
-  """All values greater than the given value."""
-  title_gt: String
-
-  """All values greater than or equal the given value."""
-  title_gte: String
-
-  """All values containing the given string."""
-  title_contains: String
-
-  """All values not containing the given string."""
-  title_not_contains: String
-
-  """All values starting with the given string."""
-  title_starts_with: String
-
-  """All values not starting with the given string."""
-  title_not_starts_with: String
-
-  """All values ending with the given string."""
-  title_ends_with: String
-
-  """All values not ending with the given string."""
-  title_not_ends_with: String
-  popularity: Int
-
-  """All values that are not equal to given value."""
-  popularity_not: Int
-
-  """All values that are contained in given list."""
-  popularity_in: [Int!]
-
-  """All values that are not contained in given list."""
-  popularity_not_in: [Int!]
-
-  """All values less than the given value."""
-  popularity_lt: Int
-
-  """All values less than or equal the given value."""
-  popularity_lte: Int
-
-  """All values greater than the given value."""
-  popularity_gt: Int
-
-  """All values greater than or equal the given value."""
-  popularity_gte: Int
 }
 
 type CategorySubscriptionPayload {
@@ -564,52 +439,14 @@ input CategorySubscriptionWhereInput {
   node: CategoryWhereInput
 }
 
-input CategoryUpdateDataInput {
-  title: String
-  popularity: Int
-}
-
 input CategoryUpdateInput {
   title: String
   popularity: Int
 }
 
-input CategoryUpdateManyDataInput {
-  title: String
-  popularity: Int
-}
-
-input CategoryUpdateManyInput {
-  create: [CategoryCreateInput!]
-  connect: [CategoryWhereUniqueInput!]
-  set: [CategoryWhereUniqueInput!]
-  disconnect: [CategoryWhereUniqueInput!]
-  delete: [CategoryWhereUniqueInput!]
-  update: [CategoryUpdateWithWhereUniqueNestedInput!]
-  updateMany: [CategoryUpdateManyWithWhereNestedInput!]
-  deleteMany: [CategoryScalarWhereInput!]
-  upsert: [CategoryUpsertWithWhereUniqueNestedInput!]
-}
-
 input CategoryUpdateManyMutationInput {
   title: String
   popularity: Int
-}
-
-input CategoryUpdateManyWithWhereNestedInput {
-  where: CategoryScalarWhereInput!
-  data: CategoryUpdateManyDataInput!
-}
-
-input CategoryUpdateWithWhereUniqueNestedInput {
-  where: CategoryWhereUniqueInput!
-  data: CategoryUpdateDataInput!
-}
-
-input CategoryUpsertWithWhereUniqueNestedInput {
-  where: CategoryWhereUniqueInput!
-  update: CategoryUpdateDataInput!
-  create: CategoryCreateInput!
 }
 
 input CategoryWhereInput {
@@ -751,11 +588,6 @@ input CollectionCreateInput {
   brand: BrandCreateOneInput
 }
 
-input CollectionCreateManyInput {
-  create: [CollectionCreateInput!]
-  connect: [CollectionWhereUniqueInput!]
-}
-
 """An edge in a connection."""
 type CollectionEdge {
   """The item at the end of the edge."""
@@ -775,97 +607,6 @@ enum CollectionOrderByInput {
 type CollectionPreviousValues {
   id: ID!
   name: String!
-}
-
-input CollectionScalarWhereInput {
-  """Logical AND on all given filters."""
-  AND: [CollectionScalarWhereInput!]
-
-  """Logical OR on all given filters."""
-  OR: [CollectionScalarWhereInput!]
-
-  """Logical NOT on all given filters combined by AND."""
-  NOT: [CollectionScalarWhereInput!]
-  id: ID
-
-  """All values that are not equal to given value."""
-  id_not: ID
-
-  """All values that are contained in given list."""
-  id_in: [ID!]
-
-  """All values that are not contained in given list."""
-  id_not_in: [ID!]
-
-  """All values less than the given value."""
-  id_lt: ID
-
-  """All values less than or equal the given value."""
-  id_lte: ID
-
-  """All values greater than the given value."""
-  id_gt: ID
-
-  """All values greater than or equal the given value."""
-  id_gte: ID
-
-  """All values containing the given string."""
-  id_contains: ID
-
-  """All values not containing the given string."""
-  id_not_contains: ID
-
-  """All values starting with the given string."""
-  id_starts_with: ID
-
-  """All values not starting with the given string."""
-  id_not_starts_with: ID
-
-  """All values ending with the given string."""
-  id_ends_with: ID
-
-  """All values not ending with the given string."""
-  id_not_ends_with: ID
-  name: String
-
-  """All values that are not equal to given value."""
-  name_not: String
-
-  """All values that are contained in given list."""
-  name_in: [String!]
-
-  """All values that are not contained in given list."""
-  name_not_in: [String!]
-
-  """All values less than the given value."""
-  name_lt: String
-
-  """All values less than or equal the given value."""
-  name_lte: String
-
-  """All values greater than the given value."""
-  name_gt: String
-
-  """All values greater than or equal the given value."""
-  name_gte: String
-
-  """All values containing the given string."""
-  name_contains: String
-
-  """All values not containing the given string."""
-  name_not_contains: String
-
-  """All values starting with the given string."""
-  name_starts_with: String
-
-  """All values not starting with the given string."""
-  name_not_starts_with: String
-
-  """All values ending with the given string."""
-  name_ends_with: String
-
-  """All values not ending with the given string."""
-  name_not_ends_with: String
 }
 
 type CollectionSubscriptionPayload {
@@ -905,50 +646,13 @@ input CollectionSubscriptionWhereInput {
   node: CollectionWhereInput
 }
 
-input CollectionUpdateDataInput {
-  name: String
-  brand: BrandUpdateOneInput
-}
-
 input CollectionUpdateInput {
   name: String
   brand: BrandUpdateOneInput
 }
 
-input CollectionUpdateManyDataInput {
-  name: String
-}
-
-input CollectionUpdateManyInput {
-  create: [CollectionCreateInput!]
-  connect: [CollectionWhereUniqueInput!]
-  set: [CollectionWhereUniqueInput!]
-  disconnect: [CollectionWhereUniqueInput!]
-  delete: [CollectionWhereUniqueInput!]
-  update: [CollectionUpdateWithWhereUniqueNestedInput!]
-  updateMany: [CollectionUpdateManyWithWhereNestedInput!]
-  deleteMany: [CollectionScalarWhereInput!]
-  upsert: [CollectionUpsertWithWhereUniqueNestedInput!]
-}
-
 input CollectionUpdateManyMutationInput {
   name: String
-}
-
-input CollectionUpdateManyWithWhereNestedInput {
-  where: CollectionScalarWhereInput!
-  data: CollectionUpdateManyDataInput!
-}
-
-input CollectionUpdateWithWhereUniqueNestedInput {
-  where: CollectionWhereUniqueInput!
-  data: CollectionUpdateDataInput!
-}
-
-input CollectionUpsertWithWhereUniqueNestedInput {
-  where: CollectionWhereUniqueInput!
-  update: CollectionUpdateDataInput!
-  create: CollectionCreateInput!
 }
 
 input CollectionWhereInput {
@@ -1057,19 +761,17 @@ enum Gender {
 
 type Item implements Node {
   id: ID!
-  brand: Brand!
-  categories(where: CategoryWhereInput, orderBy: CategoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Category!]
-  collection(where: CollectionWhereInput, orderBy: CollectionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Collection!]
   colour: String!
   createdAt: DateTime!
   description: String!
   discountedPrice: Int
   gender: Gender
-  images: [String!]!
+  images: String
   material: String
   previewImage: String
   price: Int!
-  sizes: [Int!]!
+  sizes: Int
+  splashImage: String
   stock: Int!
   title: String!
   updatedAt: DateTime!
@@ -1085,30 +787,20 @@ type ItemConnection {
   aggregate: AggregateItem!
 }
 
-input ItemCreateimagesInput {
-  set: [String!]
-}
-
 input ItemCreateInput {
   id: ID
   colour: String!
   description: String!
   discountedPrice: Int
   gender: Gender
+  images: String
   material: String
   previewImage: String
   price: Int!
+  sizes: Int
+  splashImage: String
   stock: Int!
   title: String!
-  images: ItemCreateimagesInput
-  sizes: ItemCreatesizesInput
-  brand: BrandCreateOneInput!
-  categories: CategoryCreateManyInput
-  collection: CollectionCreateManyInput
-}
-
-input ItemCreatesizesInput {
-  set: [Int!]
 }
 
 """An edge in a connection."""
@@ -1133,12 +825,18 @@ enum ItemOrderByInput {
   discountedPrice_DESC
   gender_ASC
   gender_DESC
+  images_ASC
+  images_DESC
   material_ASC
   material_DESC
   previewImage_ASC
   previewImage_DESC
   price_ASC
   price_DESC
+  sizes_ASC
+  sizes_DESC
+  splashImage_ASC
+  splashImage_DESC
   stock_ASC
   stock_DESC
   title_ASC
@@ -1154,11 +852,12 @@ type ItemPreviousValues {
   description: String!
   discountedPrice: Int
   gender: Gender
-  images: [String!]!
+  images: String
   material: String
   previewImage: String
   price: Int!
-  sizes: [Int!]!
+  sizes: Int
+  splashImage: String
   stock: Int!
   title: String!
   updatedAt: DateTime!
@@ -1201,25 +900,19 @@ input ItemSubscriptionWhereInput {
   node: ItemWhereInput
 }
 
-input ItemUpdateimagesInput {
-  set: [String!]
-}
-
 input ItemUpdateInput {
   colour: String
   description: String
   discountedPrice: Int
   gender: Gender
+  images: String
   material: String
   previewImage: String
   price: Int
+  sizes: Int
+  splashImage: String
   stock: Int
   title: String
-  images: ItemUpdateimagesInput
-  sizes: ItemUpdatesizesInput
-  brand: BrandUpdateOneRequiredInput
-  categories: CategoryUpdateManyInput
-  collection: CollectionUpdateManyInput
 }
 
 input ItemUpdateManyMutationInput {
@@ -1227,17 +920,14 @@ input ItemUpdateManyMutationInput {
   description: String
   discountedPrice: Int
   gender: Gender
+  images: String
   material: String
   previewImage: String
   price: Int
+  sizes: Int
+  splashImage: String
   stock: Int
   title: String
-  images: ItemUpdateimagesInput
-  sizes: ItemUpdatesizesInput
-}
-
-input ItemUpdatesizesInput {
-  set: [Int!]
 }
 
 input ItemWhereInput {
@@ -1423,6 +1113,46 @@ input ItemWhereInput {
 
   """All values that are not contained in given list."""
   gender_not_in: [Gender!]
+  images: String
+
+  """All values that are not equal to given value."""
+  images_not: String
+
+  """All values that are contained in given list."""
+  images_in: [String!]
+
+  """All values that are not contained in given list."""
+  images_not_in: [String!]
+
+  """All values less than the given value."""
+  images_lt: String
+
+  """All values less than or equal the given value."""
+  images_lte: String
+
+  """All values greater than the given value."""
+  images_gt: String
+
+  """All values greater than or equal the given value."""
+  images_gte: String
+
+  """All values containing the given string."""
+  images_contains: String
+
+  """All values not containing the given string."""
+  images_not_contains: String
+
+  """All values starting with the given string."""
+  images_starts_with: String
+
+  """All values not starting with the given string."""
+  images_not_starts_with: String
+
+  """All values ending with the given string."""
+  images_ends_with: String
+
+  """All values not ending with the given string."""
+  images_not_ends_with: String
   material: String
 
   """All values that are not equal to given value."""
@@ -1525,6 +1255,68 @@ input ItemWhereInput {
 
   """All values greater than or equal the given value."""
   price_gte: Int
+  sizes: Int
+
+  """All values that are not equal to given value."""
+  sizes_not: Int
+
+  """All values that are contained in given list."""
+  sizes_in: [Int!]
+
+  """All values that are not contained in given list."""
+  sizes_not_in: [Int!]
+
+  """All values less than the given value."""
+  sizes_lt: Int
+
+  """All values less than or equal the given value."""
+  sizes_lte: Int
+
+  """All values greater than the given value."""
+  sizes_gt: Int
+
+  """All values greater than or equal the given value."""
+  sizes_gte: Int
+  splashImage: String
+
+  """All values that are not equal to given value."""
+  splashImage_not: String
+
+  """All values that are contained in given list."""
+  splashImage_in: [String!]
+
+  """All values that are not contained in given list."""
+  splashImage_not_in: [String!]
+
+  """All values less than the given value."""
+  splashImage_lt: String
+
+  """All values less than or equal the given value."""
+  splashImage_lte: String
+
+  """All values greater than the given value."""
+  splashImage_gt: String
+
+  """All values greater than or equal the given value."""
+  splashImage_gte: String
+
+  """All values containing the given string."""
+  splashImage_contains: String
+
+  """All values not containing the given string."""
+  splashImage_not_contains: String
+
+  """All values starting with the given string."""
+  splashImage_starts_with: String
+
+  """All values not starting with the given string."""
+  splashImage_not_starts_with: String
+
+  """All values ending with the given string."""
+  splashImage_ends_with: String
+
+  """All values not ending with the given string."""
+  splashImage_not_ends_with: String
   stock: Int
 
   """All values that are not equal to given value."""
@@ -1609,13 +1401,6 @@ input ItemWhereInput {
 
   """All values greater than or equal the given value."""
   updatedAt_gte: DateTime
-  brand: BrandWhereInput
-  categories_every: CategoryWhereInput
-  categories_some: CategoryWhereInput
-  categories_none: CategoryWhereInput
-  collection_every: CollectionWhereInput
-  collection_some: CollectionWhereInput
-  collection_none: CollectionWhereInput
 }
 
 input ItemWhereUniqueInput {
@@ -1630,34 +1415,34 @@ scalar Long
 
 type Mutation {
   createUser(data: UserCreateInput!): User!
-  createItem(data: ItemCreateInput!): Item!
-  createCollection(data: CollectionCreateInput!): Collection!
   createCategory(data: CategoryCreateInput!): Category!
+  createCollection(data: CollectionCreateInput!): Collection!
+  createItem(data: ItemCreateInput!): Item!
   createBrand(data: BrandCreateInput!): Brand!
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
-  updateItem(data: ItemUpdateInput!, where: ItemWhereUniqueInput!): Item
-  updateCollection(data: CollectionUpdateInput!, where: CollectionWhereUniqueInput!): Collection
   updateCategory(data: CategoryUpdateInput!, where: CategoryWhereUniqueInput!): Category
+  updateCollection(data: CollectionUpdateInput!, where: CollectionWhereUniqueInput!): Collection
+  updateItem(data: ItemUpdateInput!, where: ItemWhereUniqueInput!): Item
   updateBrand(data: BrandUpdateInput!, where: BrandWhereUniqueInput!): Brand
   deleteUser(where: UserWhereUniqueInput!): User
-  deleteItem(where: ItemWhereUniqueInput!): Item
-  deleteCollection(where: CollectionWhereUniqueInput!): Collection
   deleteCategory(where: CategoryWhereUniqueInput!): Category
+  deleteCollection(where: CollectionWhereUniqueInput!): Collection
+  deleteItem(where: ItemWhereUniqueInput!): Item
   deleteBrand(where: BrandWhereUniqueInput!): Brand
   upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
-  upsertItem(where: ItemWhereUniqueInput!, create: ItemCreateInput!, update: ItemUpdateInput!): Item!
-  upsertCollection(where: CollectionWhereUniqueInput!, create: CollectionCreateInput!, update: CollectionUpdateInput!): Collection!
   upsertCategory(where: CategoryWhereUniqueInput!, create: CategoryCreateInput!, update: CategoryUpdateInput!): Category!
+  upsertCollection(where: CollectionWhereUniqueInput!, create: CollectionCreateInput!, update: CollectionUpdateInput!): Collection!
+  upsertItem(where: ItemWhereUniqueInput!, create: ItemCreateInput!, update: ItemUpdateInput!): Item!
   upsertBrand(where: BrandWhereUniqueInput!, create: BrandCreateInput!, update: BrandUpdateInput!): Brand!
   updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
-  updateManyItems(data: ItemUpdateManyMutationInput!, where: ItemWhereInput): BatchPayload!
-  updateManyCollections(data: CollectionUpdateManyMutationInput!, where: CollectionWhereInput): BatchPayload!
   updateManyCategories(data: CategoryUpdateManyMutationInput!, where: CategoryWhereInput): BatchPayload!
+  updateManyCollections(data: CollectionUpdateManyMutationInput!, where: CollectionWhereInput): BatchPayload!
+  updateManyItems(data: ItemUpdateManyMutationInput!, where: ItemWhereInput): BatchPayload!
   updateManyBrands(data: BrandUpdateManyMutationInput!, where: BrandWhereInput): BatchPayload!
   deleteManyUsers(where: UserWhereInput): BatchPayload!
-  deleteManyItems(where: ItemWhereInput): BatchPayload!
-  deleteManyCollections(where: CollectionWhereInput): BatchPayload!
   deleteManyCategories(where: CategoryWhereInput): BatchPayload!
+  deleteManyCollections(where: CollectionWhereInput): BatchPayload!
+  deleteManyItems(where: ItemWhereInput): BatchPayload!
   deleteManyBrands(where: BrandWhereInput): BatchPayload!
 }
 
@@ -1699,19 +1484,19 @@ enum Permission {
 
 type Query {
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
-  items(where: ItemWhereInput, orderBy: ItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Item]!
-  collections(where: CollectionWhereInput, orderBy: CollectionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Collection]!
   categories(where: CategoryWhereInput, orderBy: CategoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Category]!
+  collections(where: CollectionWhereInput, orderBy: CollectionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Collection]!
+  items(where: ItemWhereInput, orderBy: ItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Item]!
   brands(where: BrandWhereInput, orderBy: BrandOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Brand]!
   user(where: UserWhereUniqueInput!): User
-  item(where: ItemWhereUniqueInput!): Item
-  collection(where: CollectionWhereUniqueInput!): Collection
   category(where: CategoryWhereUniqueInput!): Category
+  collection(where: CollectionWhereUniqueInput!): Collection
+  item(where: ItemWhereUniqueInput!): Item
   brand(where: BrandWhereUniqueInput!): Brand
   usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
-  itemsConnection(where: ItemWhereInput, orderBy: ItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ItemConnection!
-  collectionsConnection(where: CollectionWhereInput, orderBy: CollectionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CollectionConnection!
   categoriesConnection(where: CategoryWhereInput, orderBy: CategoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CategoryConnection!
+  collectionsConnection(where: CollectionWhereInput, orderBy: CollectionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CollectionConnection!
+  itemsConnection(where: ItemWhereInput, orderBy: ItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ItemConnection!
   brandsConnection(where: BrandWhereInput, orderBy: BrandOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BrandConnection!
 
   """Fetches an object given its ID"""
@@ -1723,9 +1508,9 @@ type Query {
 
 type Subscription {
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
-  item(where: ItemSubscriptionWhereInput): ItemSubscriptionPayload
-  collection(where: CollectionSubscriptionWhereInput): CollectionSubscriptionPayload
   category(where: CategorySubscriptionWhereInput): CategorySubscriptionPayload
+  collection(where: CollectionSubscriptionWhereInput): CollectionSubscriptionPayload
+  item(where: ItemSubscriptionWhereInput): ItemSubscriptionPayload
   brand(where: BrandSubscriptionWhereInput): BrandSubscriptionPayload
 }
 
