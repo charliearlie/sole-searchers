@@ -13,8 +13,9 @@ export default App => {
       if (App.getInitialProps) {
         appProps = await App.getInitialProps(ctx);
       }
-
-      const apollo = initApollo();
+      const apollo = !process.browser
+        ? initApollo(null, appProps.pageProps.headers.cookie)
+        : initApollo();
       if (typeof window === 'undefined') {
         try {
           await getDataFromTree(
