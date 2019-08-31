@@ -12,6 +12,7 @@ class MyApp extends App {
     }
 
     pageProps.query = ctx.query;
+    pageProps.headers = ctx.req.headers;
     return { pageProps };
   }
   render() {
