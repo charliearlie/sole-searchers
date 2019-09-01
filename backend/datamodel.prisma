@@ -48,6 +48,7 @@ type Collection {
 
 type Item {
   id: ID! @id
+  brand: String
   colour: String!
   createdAt: DateTime! @createdAt
   description: String!

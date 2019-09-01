@@ -1,5 +1,5 @@
 # source: https://eu1.prisma.sh/charlie-waite-c4907e/sole-searchers/dev
-# timestamp: Mon Aug 26 2019 20:46:47 GMT+0100 (British Summer Time)
+# timestamp: Sun Sep 01 2019 19:51:04 GMT+0100 (British Summer Time)
 
 type AggregateBrand {
   count: Int!
@@ -761,6 +761,7 @@ enum Gender {
 
 type Item implements Node {
   id: ID!
+  brand: String
   colour: String!
   createdAt: DateTime!
   description: String!
@@ -789,6 +790,7 @@ type ItemConnection {
 
 input ItemCreateInput {
   id: ID
+  brand: String
   colour: String!
   description: String!
   discountedPrice: Int
@@ -815,6 +817,8 @@ type ItemEdge {
 enum ItemOrderByInput {
   id_ASC
   id_DESC
+  brand_ASC
+  brand_DESC
   colour_ASC
   colour_DESC
   createdAt_ASC
@@ -847,6 +851,7 @@ enum ItemOrderByInput {
 
 type ItemPreviousValues {
   id: ID!
+  brand: String
   colour: String!
   createdAt: DateTime!
   description: String!
@@ -901,6 +906,7 @@ input ItemSubscriptionWhereInput {
 }
 
 input ItemUpdateInput {
+  brand: String
   colour: String
   description: String
   discountedPrice: Int
@@ -916,6 +922,7 @@ input ItemUpdateInput {
 }
 
 input ItemUpdateManyMutationInput {
+  brand: String
   colour: String
   description: String
   discountedPrice: Int
@@ -979,6 +986,46 @@ input ItemWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
+  brand: String
+
+  """All values that are not equal to given value."""
+  brand_not: String
+
+  """All values that are contained in given list."""
+  brand_in: [String!]
+
+  """All values that are not contained in given list."""
+  brand_not_in: [String!]
+
+  """All values less than the given value."""
+  brand_lt: String
+
+  """All values less than or equal the given value."""
+  brand_lte: String
+
+  """All values greater than the given value."""
+  brand_gt: String
+
+  """All values greater than or equal the given value."""
+  brand_gte: String
+
+  """All values containing the given string."""
+  brand_contains: String
+
+  """All values not containing the given string."""
+  brand_not_contains: String
+
+  """All values starting with the given string."""
+  brand_starts_with: String
+
+  """All values not starting with the given string."""
+  brand_not_starts_with: String
+
+  """All values ending with the given string."""
+  brand_ends_with: String
+
+  """All values not ending with the given string."""
+  brand_not_ends_with: String
   colour: String
 
   """All values that are not equal to given value."""
