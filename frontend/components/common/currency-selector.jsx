@@ -4,7 +4,7 @@ import useCurrency from '../../hooks/use-currency';
 function CurrencySelector() {
   const currencies = ['GBP', 'EUR', 'USD', 'AUD']; // These will come from backend
   const [isMenuOpen, setMenuVisibility] = React.useState(false);
-  const [currency, setCurrency] = useCurrency();
+  const [currencyConfig, setCurrency] = useCurrency();
 
   const renderMenu = () => {
     if (!isMenuOpen) return null;
@@ -26,7 +26,9 @@ function CurrencySelector() {
   };
   return (
     <div>
-      <button onClick={() => setMenuVisibility(!isMenuOpen)}>{currency}</button>
+      <button onClick={() => setMenuVisibility(!isMenuOpen)}>
+        {currencyConfig.currency}
+      </button>
       {renderMenu()}
     </div>
   );
