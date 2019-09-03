@@ -1,5 +1,5 @@
 # source: https://eu1.prisma.sh/charlie-waite-c4907e/sole-searchers/dev
-# timestamp: Sun Sep 01 2019 19:51:04 GMT+0100 (British Summer Time)
+# timestamp: Tue Sep 03 2019 20:15:16 GMT+0100 (British Summer Time)
 
 type AggregateBrand {
   count: Int!
@@ -769,6 +769,7 @@ type Item implements Node {
   gender: Gender
   images: String
   material: String
+  popularity: Int
   previewImage: String
   price: Int!
   sizes: Int
@@ -797,6 +798,7 @@ input ItemCreateInput {
   gender: Gender
   images: String
   material: String
+  popularity: Int
   previewImage: String
   price: Int!
   sizes: Int
@@ -833,6 +835,8 @@ enum ItemOrderByInput {
   images_DESC
   material_ASC
   material_DESC
+  popularity_ASC
+  popularity_DESC
   previewImage_ASC
   previewImage_DESC
   price_ASC
@@ -859,6 +863,7 @@ type ItemPreviousValues {
   gender: Gender
   images: String
   material: String
+  popularity: Int
   previewImage: String
   price: Int!
   sizes: Int
@@ -913,6 +918,7 @@ input ItemUpdateInput {
   gender: Gender
   images: String
   material: String
+  popularity: Int
   previewImage: String
   price: Int
   sizes: Int
@@ -929,6 +935,7 @@ input ItemUpdateManyMutationInput {
   gender: Gender
   images: String
   material: String
+  popularity: Int
   previewImage: String
   price: Int
   sizes: Int
@@ -1240,6 +1247,28 @@ input ItemWhereInput {
 
   """All values not ending with the given string."""
   material_not_ends_with: String
+  popularity: Int
+
+  """All values that are not equal to given value."""
+  popularity_not: Int
+
+  """All values that are contained in given list."""
+  popularity_in: [Int!]
+
+  """All values that are not contained in given list."""
+  popularity_not_in: [Int!]
+
+  """All values less than the given value."""
+  popularity_lt: Int
+
+  """All values less than or equal the given value."""
+  popularity_lte: Int
+
+  """All values greater than the given value."""
+  popularity_gt: Int
+
+  """All values greater than or equal the given value."""
+  popularity_gte: Int
   previewImage: String
 
   """All values that are not equal to given value."""
