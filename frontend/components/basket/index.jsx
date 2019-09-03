@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import BasketIcon from '../../assets/svg/basket.svg';
+import BasketIcon from '../../static/svg/basket.svg';
 
 function Basket() {
   return (
