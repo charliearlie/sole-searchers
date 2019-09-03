@@ -73,6 +73,7 @@ const SplashWrapper = styled.a`
 
     h2 {
       font-weight: normal;
+      margin-top: 0;
     }
 
     button {
