@@ -39,6 +39,7 @@
     "react-transition-group": "^4.2.2",
     "styled-components": "^4.3.2",
     "typescript": "^3.5.3",
+    "use-media-hook": "^1.0.4",
     "waait": "^1.0.5"
   },
   "devDependencies": {
