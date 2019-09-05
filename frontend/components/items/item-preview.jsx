@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import styled from 'styled-components';
 import { getItemPrice } from '../../services/item-service';
 import useCurrency from '../../hooks/use-currency';
@@ -6,12 +7,14 @@ import useCurrency from '../../hooks/use-currency';
 function ItemPreview(props) {
   const [currencyConfig] = useCurrency();
   return (
-    <Preview>
-      <img src={props.item.previewImage} />
-      <h4>{props.item.brand}</h4>
-      <span className="title">{props.item.title}</span>
-      <span>{getItemPrice(props.item.price, currencyConfig)}</span>
-    </Preview>
+    <Link prefetch href={`/item/${props.item.slug}`}>
+      <Preview>
+        <img loading="lazy" src={props.item.previewImage} />
+        <h4>{props.item.brand}</h4>
+        <span className="title">{props.item.title}</span>
+        <span>{getItemPrice(props.item.price, currencyConfig)}</span>
+      </Preview>
+    </Link>
   );
 }
 
