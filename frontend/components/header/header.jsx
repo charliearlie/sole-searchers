@@ -23,7 +23,9 @@ const Header = () => {
     <>
       <StyledHeader>
         <NavigationWrapper>
-          <div className="logo">Sole Searchers</div>
+          <Link href="/">
+            <span className="logo">Sole Searchers</span>
+          </Link>
           <Navigation />
         </NavigationWrapper>
         <Subheader />
