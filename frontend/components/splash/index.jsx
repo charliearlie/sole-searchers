@@ -33,7 +33,7 @@ function Splash(props) {
         </Button>
       </div>
       <div className="image-container">
-        <img src={splashItem.splashImage} />
+        <img loading="lazy" src={splashItem.splashImage} />
       </div>
     </SplashWrapper>
   );

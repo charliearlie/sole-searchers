@@ -8,6 +8,7 @@ const ITEMS_QUERY = gql`
       title
       previewImage
       price
+      slug
     }
   }
 `;
@@ -20,6 +21,7 @@ const POPULAR_ITEMS_QUERY = gql`
       title
       previewImage
       price
+      slug
     }
   }
 `;
