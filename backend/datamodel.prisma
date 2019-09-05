@@ -60,6 +60,7 @@ type Item {
   previewImage: String
   price: Int!
   sizes: Int
+  slug: String @unique
   splashImage: String
   stock: Int!
   title: String!
