@@ -51,7 +51,7 @@ const Nav = styled.nav`
     }
   }
 
-  @media (max-width: 1025px) {
+  @media (max-width: ${({ theme }) => theme.mobileWidth}) {
     justify-content: flex-start;
     padding: 0 20px;
 

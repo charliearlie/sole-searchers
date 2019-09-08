@@ -22,7 +22,7 @@ function ItemPreviewCollection({ header, type }) {
       <CollectionHeader>{header}</CollectionHeader>
       <Collection>
         {data.items.map(item => (
-          <ItemPreview item={item} />
+          <ItemPreview key={item.title} item={item} />
         ))}
       </Collection>
     </>
@@ -33,6 +33,7 @@ const Collection = styled.div`
   display: flex;
   padding-bottom: 30px;
   width: 100%;
+  flex-wrap: wrap;
 `;
 
 const CollectionHeader = styled.h2`

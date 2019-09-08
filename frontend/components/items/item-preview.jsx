@@ -24,6 +24,11 @@ const Preview = styled.div`
   cursor: pointer;
   flex-direction: column;
   transition: 0.2s ease;
+  flex: 1 0 25%;
+
+  @media (max-width: ${({ theme }) => theme.ipadWidth}) {
+    flex: 1 0 50%;
+  }
 
   h4 {
     margin-top: 0;
@@ -37,6 +42,7 @@ const Preview = styled.div`
 
   .title {
     opacity: 0.5;
+    text-align: center;
   }
 
   &:hover {
