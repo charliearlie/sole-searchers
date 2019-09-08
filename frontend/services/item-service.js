@@ -1,14 +1,20 @@
-export const getItemPrice = (priceInPounds, currencyConfig) => {
+export const getItemPrice = (
+  priceInPounds,
+  currencyConfig,
+  withSymbol = true
+) => {
   if (!currencyConfig.rates) return priceInPounds;
   const { currency, rates } = currencyConfig;
 
-  return appendCurrencySymbol(
-    Math.floor(rates[currency] * priceInPounds),
-    currency
-  );
+  return !withSymbol
+    ? Math.floor(rates[currency] * priceInPounds)
+    : appendCurrencySymbol(
+        Math.floor(rates[currency] * priceInPounds),
+        currency
+      );
 };
 
-const appendCurrencySymbol = (price, currency) => {
+export const appendCurrencySymbol = (price, currency) => {
   const symbolMap = {
     USD: '$',
     GBP: '£',

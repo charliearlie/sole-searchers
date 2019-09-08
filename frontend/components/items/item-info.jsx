@@ -1,18 +1,24 @@
 import styled from 'styled-components';
-import { getItemPrice } from '../../services/item-service';
-import useCurrency from '../../hooks/use-currency';
+import Link from 'next/link';
+import Button from '../common/button';
+import ItemFinance from './item-finance';
 
-function ItemInfo(props) {
-  const [currencyConfig] = useCurrency();
+function ItemInfo({ item }) {
   return (
     <Wrapper>
       <div className="image-container">
-        <img src={props.item.images} />
+        <img src={item.images} />
       </div>
       <div className="info">
-        <h3>{props.item.brand}</h3>
-        <h2>{props.item.title}</h2>
-        <span>{getItemPrice(props.item.price, currencyConfig)}</span>
+        <h3>{item.brand}</h3>
+        <h2>{item.title}</h2>
+        <ItemFinance price={item.price} />
+        <Link href="/deliveries-and-returns">
+          <DeliveryAndReturn>Delivery & return</DeliveryAndReturn>
+        </Link>
+        <Button padding={15} borderRadius={0} buttonType="secondary">
+          ADD TO CART
+        </Button>
       </div>
     </Wrapper>
   );
@@ -45,11 +51,12 @@ const Wrapper = styled.div`
 
     h2,
     h3 {
-      margin-bottom: 5px;
+      margin: 0;
+      opacity: 0.6;
     }
 
     h2 {
-      margin-top: 5px;
+      opacity: 0.8;
     }
   }
   @media (max-width: ${({ theme }) => theme.ipadWidth}) {
@@ -59,6 +66,13 @@ const Wrapper = styled.div`
       max-width: 100%;
     }
   }
+`;
+
+const DeliveryAndReturn = styled.a`
+  color: ${({ theme }) => theme.softBlue};
+  font-weight: 800;
+  text-decoration: none;
+  text-transform: uppercase;
 `;
 
 export default ItemInfo;
