@@ -56,6 +56,7 @@ const NavigationWrapper = styled.div`
 
   .logo {
     color: ${props => props.theme.red};
+    cursor: pointer;
     font-family: 'Anton', 'Sans-serif';
     font-size: 30px;
     letter-spacing: 7px;
