@@ -15,6 +15,7 @@ const theme = {
   lightGrey: '#E1E1E1',
   lighterGrey: '#E0E0E0',
   offWhite: '#EDEDED',
+  softBlue: '#68b2fc',
   maxWidth: '1100px',
   bs: '0 12px 24px 0 rgba(0, 0, 0, 0.09)',
   spacingUnit: '0.8rem',
