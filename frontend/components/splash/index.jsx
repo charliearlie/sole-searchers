@@ -81,6 +81,20 @@ const SplashWrapper = styled.a`
       width: 50%;
     }
   }
+
+  @media (max-width: ${({ theme }) => theme.ipadWidth}) {
+    flex-direction: column-reverse;
+    justify-content: center;
+
+    .image-container {
+      height: 400px;
+      max-width: 100%;
+    }
+
+    .info {
+      width: 100%;
+    }
+  }
 `;
 
 export default Splash;
