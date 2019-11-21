@@ -51,6 +51,7 @@ type Item {
   brand: String
   colour: String!
   createdAt: DateTime! @createdAt
+  darkImage: String
   description: String!
   discountedPrice: Int
   gender: Gender
