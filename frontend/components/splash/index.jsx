@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
+import { useNetworkStatus } from '../../hooks/adaptive-hooks';
 import Button from '../common/button';
 import LoadingSpinner from '../loading-spinner';
 
@@ -9,22 +10,40 @@ const SPLASH_ITEMS_QUERY = gql`
   query SPLASH_ITEMS_QUERY {
     items(where: { splashImage_not: "" }) {
       id
+      darkImage
+      previewImage
       title
       splashImage
+      slug
     }
   }
 `;
 
 function Splash(props) {
   const { data, error, loading } = useQuery(SPLASH_ITEMS_QUERY);
+  const { networkStatus } = useNetworkStatus();
   if (loading) return <LoadingSpinner />;
 
   if (!data.items) return null;
 
+  let imageSrc;
+
   const splashItem = data.items[0];
 
+  switch (networkStatus) {
+    case 'slow-2g':
+    case '2g':
+      imageSrc = splashItem.previewImage;
+      break;
+    default:
+      imageSrc = splashItem.splashImage;
+      break;
+  }
+
+  imageSrc = props.prefersDarkMode ? splashItem.darkImage : imageSrc;
+
   return (
-    <SplashWrapper href="www.google.com">
+    <SplashWrapper href={`item/${splashItem.slug}`}>
       <div className="info">
         <h1>Popular drops</h1>
         <h2>{splashItem.title}</h2>
@@ -33,7 +52,7 @@ function Splash(props) {
         </Button>
       </div>
       <div className="image-container">
-        <img loading="lazy" src={splashItem.splashImage} />
+        {<img loading="lazy" src={imageSrc} />}
       </div>
     </SplashWrapper>
   );
@@ -42,7 +61,7 @@ function Splash(props) {
 const SplashWrapper = styled.a`
   display: flex;
   align-items: flex-start;
-  color: black;
+  color: ${({ theme }) => theme.fontColour};
   max-height: 600px;
   padding: 15px;
   text-decoration: none;
@@ -67,11 +86,13 @@ const SplashWrapper = styled.a`
     justify-content: center;
 
     h1 {
+      color: ${({ theme }) => theme.fontColour};
       font-weight: 900;
       text-transform: uppercase;
     }
 
     h2 {
+      color: ${({ theme }) => theme.fontColour};
       font-weight: normal;
       margin-top: 0;
     }
