@@ -38,7 +38,7 @@ export default Header;
 
 const StyledHeader = styled.header`
   position: fixed;
-  background: white;
+  background: ${({ theme }) => theme.bodyColour};
   z-index: 3;
   width: 100%;
   /* box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.19); */

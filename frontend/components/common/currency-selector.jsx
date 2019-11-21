@@ -36,7 +36,7 @@ function CurrencySelector() {
 
 const Menu = styled.div`
   position: absolute;
-  background: white;
+  background: ${({ theme }) => theme.bodyColour};
   border-radius: 3px;
   box-shadow: 0 5px 20px -5px rgba(32, 36, 46, 0.85);
   max-height: 140px;

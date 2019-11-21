@@ -3,13 +3,26 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import { getItemPrice } from '../../services/item-service';
 import useCurrency from '../../hooks/use-currency';
+import LazyLoad from 'react-lazyload';
+
+// Will move into own file to be reusable
+function ImagePlaceholder({ src }) {
+  return (
+    <div
+      style={{ background: '#ddd', borderRadius: '4px', height: '40px' }}
+    ></div>
+  );
+}
 
 function ItemPreview(props) {
   const [currencyConfig] = useCurrency();
   return (
     <Link prefetch href={`/item/${props.item.slug}`}>
       <Preview>
-        <img loading="lazy" src={props.item.previewImage} />
+        <LazyLoad height={200} placeholder={<ImagePlaceholder />}>
+          <img loading="lazy" src={props.item.previewImage} />
+        </LazyLoad>
+
         <h4>{props.item.brand}</h4>
         <span className="title">{props.item.title}</span>
         <span>{getItemPrice(props.item.price, currencyConfig)}</span>

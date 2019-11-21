@@ -21,7 +21,7 @@ const Nav = styled.nav`
   /* box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.19); */
 
   > * {
-    color: ${({ theme }) => theme.black};
+    color: ${({ theme }) => theme.fontColour};
     font-size: 1.2rem;
     margin-right: 16px;
     text-decoration: none;
@@ -30,6 +30,7 @@ const Nav = styled.nav`
   button {
     background: transparent;
     border: none;
+    color: ${({ theme }) => theme.fontColour};
     cursor: pointer;
     outline: none;
     padding: 0;
