@@ -4,7 +4,7 @@ import { CurrencyContext } from '../context/currency-context';
 function useCurrency() {
   const context = React.useContext(CurrencyContext);
   if (context === undefined) {
-    throw new Error(`useUser must be used within a User Provider`);
+    throw new Error(`useCurrency must be used within a Currency Provider`);
   }
   return [context.currency, context.changeCurrency];
 }
