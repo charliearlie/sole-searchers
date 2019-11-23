@@ -38,7 +38,7 @@ function ItemInfo({ itemSlug }) {
           <title>{item.title}</title>
         </Head>
         <div className="image-container">
-          <img src={item.images} />
+          <img alt={`Image of ${item.title}`} src={item.images} />
         </div>
         <div className="info">
           <h3>{item.brand}</h3>
