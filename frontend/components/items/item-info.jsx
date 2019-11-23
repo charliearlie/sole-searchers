@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import Button from '../common/button';
 import ItemFinance from './item-finance';
+import ItemSizes from './item-sizes';
 
 function ItemInfo({ item }) {
   return (
@@ -16,8 +17,9 @@ function ItemInfo({ item }) {
         <Link href="/deliveries-and-returns">
           <DeliveryAndReturn>Delivery & return</DeliveryAndReturn>
         </Link>
+        <ItemSizes />
         <Button padding={15} borderRadius={0} buttonType="secondary">
-          ADD TO CART
+          ADD TO BASKET
         </Button>
       </div>
     </Wrapper>
@@ -25,7 +27,12 @@ function ItemInfo({ item }) {
 }
 
 const Wrapper = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+
+  @media (max-width: ${({ theme }) => theme.mobileWidth}) {
+    grid-template-columns: 1fr;
+  }
 
   img {
     height: 100%;
@@ -33,8 +40,6 @@ const Wrapper = styled.div`
   }
 
   .image-container {
-    flex-grow: 2;
-    max-width: 66%;
     img {
       height: 100%;
       width: 100%;
