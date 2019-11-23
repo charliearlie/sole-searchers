@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 function LoadingSpinner() {
-  return <Spinner />;
+  return <Spinner data-testid="loading-spinner" />;
 }
 
 const Spinner = styled.div`
