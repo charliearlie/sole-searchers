@@ -9,7 +9,11 @@ function ItemSizes(props) {
       <Sizes>
         {sizes.map(size => {
           const styles = size === 10 ? 'selected' : '';
-          return <button className={styles}>{size}</button>;
+          return (
+            <button className={styles} key={size}>
+              {size}
+            </button>
+          );
         })}
       </Sizes>
     </>

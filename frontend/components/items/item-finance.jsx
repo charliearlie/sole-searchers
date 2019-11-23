@@ -8,7 +8,6 @@ import useCurrency from '../../hooks/use-currency';
 
 function ItemFinance({ price }) {
   const [currencyConfig] = useCurrency();
-
   const getItemMonthlyPayments = (price, duration = 12) => {
     const monthlyPrice = appendCurrencySymbol(
       Math.ceil(price / duration),

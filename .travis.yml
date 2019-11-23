@@ -1,0 +1,13 @@
+language: node_js
+cache:
+  npm: false
+node_js:
+  - 'stable'
+cache:
+  directories:
+    - node_modules
+script:
+  - npm install --prefix frontend
+  - npm run test --prefix frontend
+  - npm run build --prefix frontend
+after_script: npx codecov@3
