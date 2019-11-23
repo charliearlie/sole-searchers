@@ -10,3 +10,4 @@ script:
   - npm install --prefix frontend
   - npm run test --prefix frontend
   - npm run build --prefix frontend
+after_script: npx codecov@3

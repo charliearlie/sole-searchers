@@ -6,7 +6,7 @@
     "dev": "next -p 7777",
     "build": "next build",
     "start": "next start",
-    "test": "NODE_ENV=test jest",
+    "test": "NODE_ENV=test jest --coverage",
     "test:watch": "NODE_ENV=test jest --watch",
     "test-win": "SET NODE_ENV=test&& jest --watch",
     "heroku-postbuild": "next build"
