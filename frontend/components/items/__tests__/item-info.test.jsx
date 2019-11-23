@@ -2,7 +2,6 @@ import { act, render } from '../../../util/test-utils/with-providers';
 import { MockedProvider } from '@apollo/react-testing';
 import { GraphQLError } from 'graphql';
 import ItemInfo, { ITEM_QUERY } from '../item-info';
-import { CurrencyContext } from '../../../context/currency-context';
 
 const wait = require('waait');
 
@@ -32,7 +31,7 @@ const mocks = [
 
 describe('<ItemInfo />', () => {
   test('It initially renders the loading spinner', async () => {
-    const { container, getByTestId } = render(
+    const { getByTestId } = render(
       <MockedProvider mocks={mocks} addTypename={false}>
         <ItemInfo itemSlug="off-white-nike-air-force-1-MCA" />
       </MockedProvider>
@@ -42,8 +41,7 @@ describe('<ItemInfo />', () => {
   });
 
   test("It displays the item's information after load", async () => {
-    console.log(mocks);
-    const { container, getByText } = render(
+    const { getByText } = render(
       <MockedProvider mocks={mocks} addTypename={false}>
         <ItemInfo itemSlug="off-white-nike-air-force-1-MCA" />
       </MockedProvider>
@@ -53,7 +51,7 @@ describe('<ItemInfo />', () => {
   });
 
   test('It displays the price in pounds', async () => {
-    const { container, getByText } = render(
+    const { getByText } = render(
       <MockedProvider mocks={mocks} addTypename={false}>
         <ItemInfo itemSlug="off-white-nike-air-force-1-MCA" />
       </MockedProvider>
@@ -63,7 +61,7 @@ describe('<ItemInfo />', () => {
   });
 
   test("It displays the price in dollars if the user's currency is Dollars", async () => {
-    const { container, getByText } = render(
+    const { getByText } = render(
       <MockedProvider mocks={mocks} addTypename={false}>
         <ItemInfo itemSlug="off-white-nike-air-force-1-MCA" />
       </MockedProvider>,
@@ -74,14 +72,12 @@ describe('<ItemInfo />', () => {
   });
 
   test('It displays a header if there is an error', async () => {
-    // Put an incorrect slug into the query
     const newMocks = [...mocks];
     newMocks[0].error = [new GraphQLError('Error!')];
-    const { container, getByText } = render(
+    const { getByText } = render(
       <MockedProvider mocks={newMocks} addTypename={false}>
         <ItemInfo itemSlug="off-white-nike-air-force-1-MCA" />
-      </MockedProvider>,
-      { currency: 'USD' }
+      </MockedProvider>
     );
     await wait(10);
     expect(getByText(`Something went wrong`)).toBeInTheDocument();
