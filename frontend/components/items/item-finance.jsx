@@ -6,7 +6,7 @@ import {
 } from '../../services/item-service';
 import useCurrency from '../../hooks/use-currency';
 
-function ItemFinance({ price }) {
+function ItemFinance({ financeDuration = 12, price }) {
   const [currencyConfig] = useCurrency();
   const getItemMonthlyPayments = (price, duration = 12) => {
     const monthlyPrice = appendCurrencySymbol(
@@ -23,7 +23,10 @@ function ItemFinance({ price }) {
   return (
     <>
       <Price>{getItemPrice(price, currencyConfig)}</Price>
-      {getItemMonthlyPayments(getItemPrice(price, currencyConfig, false), 12)}
+      {getItemMonthlyPayments(
+        getItemPrice(price, currencyConfig, false),
+        financeDuration
+      )}
     </>
   );
 }
