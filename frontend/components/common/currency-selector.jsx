@@ -25,12 +25,12 @@ function CurrencySelector() {
     );
   };
   return (
-    <div>
+    <>
       <button onClick={() => setMenuVisibility(!isMenuOpen)}>
         {currencyConfig.currency}
       </button>
       {renderMenu()}
-    </div>
+    </>
   );
 }
 
