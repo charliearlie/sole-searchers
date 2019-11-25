@@ -13,7 +13,6 @@ function ItemPreviewCollection({ header, type }) {
   if (loading) return <LoadingSpinner />;
 
   if (error) {
-    console.log(error);
     return null;
   }
 

@@ -12,9 +12,9 @@ const SubNavigation = () => {
   `;
 
   const { data, error, loading } = useQuery(POPULAR_BRANDS_QUERY);
-  const { brands } = data;
 
   if (loading) return <span>Loading...</span>;
+  const { brands } = data;
   return (
     <Nav>
       {brands.map(brand => (

@@ -46,7 +46,7 @@ describe('<ItemInfo />', () => {
         <ItemInfo itemSlug="off-white-nike-air-force-1-MCA" />
       </MockedProvider>
     );
-    await wait(10);
+    await act(() => wait(0));
     expect(getByText(itemData.title)).toBeInTheDocument();
   });
 
@@ -56,7 +56,7 @@ describe('<ItemInfo />', () => {
         <ItemInfo itemSlug="off-white-nike-air-force-1-MCA" />
       </MockedProvider>
     );
-    await wait(10);
+    await act(() => wait(0));
     expect(getByText(`£${itemData.price}`)).toBeInTheDocument();
   });
 
@@ -69,7 +69,7 @@ describe('<ItemInfo />', () => {
       </MockedProvider>,
       { currency: 'USD' }
     );
-    await wait(10);
+    await act(() => wait(0));
     expect(queryByText('$154')).toBeNull();
   });
 
@@ -81,7 +81,7 @@ describe('<ItemInfo />', () => {
         <ItemInfo itemSlug="off-white-nike-air-force-1-MCA" />
       </MockedProvider>
     );
-    await wait(10);
+    await act(() => wait(0));
     expect(getByText(`Something went wrong`)).toBeInTheDocument();
   });
 });
