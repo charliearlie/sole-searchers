@@ -8,6 +8,7 @@
     "start": "next start",
     "test": "NODE_ENV=test jest --coverage",
     "test:watch": "NODE_ENV=test jest --watch",
+    "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand",
     "test-win": "SET NODE_ENV=test&& jest --watch",
     "heroku-postbuild": "next build"
   },
@@ -53,6 +54,7 @@
     "casual": "^1.6.2",
     "graphql-tools": "^4.0.5",
     "jest": "^24.9.0",
+    "jest-svg-transformer": "^1.0.0",
     "jest-transform-graphql": "^2.1.0",
     "jest-watch-typeahead": "^0.4.2",
     "waait": "^1.0.5"
