@@ -46,7 +46,7 @@ describe('<Splash />', () => {
       </MockedProvider>
     );
 
-    await wait(0);
+    await act(() => wait(0));
 
     expect(container.firstChild.nodeName).toEqual('A');
     expect(container.firstChild).toHaveAttribute(
@@ -62,7 +62,7 @@ describe('<Splash />', () => {
       </MockedProvider>
     );
 
-    await wait(0);
+    await act(() => wait(0));
 
     // This won't be hardcoded when the backend is set up for splashes
     expect(getByText('Popular drops')).toBeInTheDocument();
