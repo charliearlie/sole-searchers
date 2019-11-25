@@ -2,17 +2,17 @@ import styled from 'styled-components';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
 
-const SubNavigation = () => {
-  const POPULAR_BRANDS_QUERY = gql`
-    query POPULAR_BRANDS_QUERY {
-      brands(orderBy: popularity_DESC) {
-        name
-      }
+export const POPULAR_BRANDS_QUERY = gql`
+  query POPULAR_BRANDS_QUERY {
+    brands(orderBy: popularity_DESC) {
+      name
     }
-  `;
+  }
+`;
 
+const SubNavigation = () => {
   const { data, error, loading } = useQuery(POPULAR_BRANDS_QUERY);
-
+  if (error) return console.log(error) || <span>Error!!</span>;
   if (loading) return <span>Loading...</span>;
   const { brands } = data;
   return (
