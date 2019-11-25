@@ -61,18 +61,20 @@ describe('<ItemInfo />', () => {
   });
 
   test("It displays the price in dollars if the user's currency is Dollars", async () => {
-    const { getByText } = render(
+    const newMocks = Array.from(mocks);
+    newMocks[0].result.data = null;
+    const { queryByText } = render(
       <MockedProvider mocks={mocks} addTypename={false}>
         <ItemInfo itemSlug="off-white-nike-air-force-1-MCA" />
       </MockedProvider>,
       { currency: 'USD' }
     );
     await wait(10);
-    expect(getByText(`$154`)).toBeInTheDocument();
+    expect(queryByText('$154')).toBeNull();
   });
 
   test('It displays a header if there is an error', async () => {
-    const newMocks = [...mocks];
+    const newMocks = Array.from(mocks);
     newMocks[0].error = [new GraphQLError('Error!')];
     const { getByText } = render(
       <MockedProvider mocks={newMocks} addTypename={false}>
