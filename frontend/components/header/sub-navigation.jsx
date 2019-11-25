@@ -12,7 +12,7 @@ export const POPULAR_BRANDS_QUERY = gql`
 
 const SubNavigation = () => {
   const { data, error, loading } = useQuery(POPULAR_BRANDS_QUERY);
-  if (error) return console.log(error) || <span>Error!!</span>;
+  if (error) return <span>Error!!</span>;
   if (loading) return <span>Loading...</span>;
   const { brands } = data;
   return (
