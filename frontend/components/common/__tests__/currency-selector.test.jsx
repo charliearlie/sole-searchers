@@ -1,9 +1,6 @@
 import CurrencySelector from '../currency-selector';
-import {
-  act,
-  fireEvent,
-  render,
-} from '../../../util/test-utils/with-providers';
+import { fireEvent, render } from '../../../util/test-utils/with-providers';
+import { render as rtlRender } from '@testing-library/react';
 
 describe('<CurrencySelector />', () => {
   test('it should render a button with the current currency on display', () => {
@@ -38,5 +35,11 @@ describe('<CurrencySelector />', () => {
     fireEvent.click(usDollars);
     expect(changeCurrency).toHaveBeenCalled();
     expect(changeCurrency).toHaveBeenCalledWith('USD');
+  });
+
+  test('it should throw an error if no context is passed', () => {
+    expect(() => rtlRender(<CurrencySelector />)).toThrowError(
+      new Error('useCurrency must be used within a Currency Provider')
+    );
   });
 });
