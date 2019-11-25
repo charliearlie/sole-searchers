@@ -26,58 +26,39 @@ const theme = {
   ipadWidth: '1024px',
 };
 
-const darkTheme = {
-  bodyColour: '#262730',
-  fontColour: '#EDEDED',
-  red: '#E44847',
-  moderateRed: '#D46F58',
-  black: '#393939',
-  darkBlue: '#2B3B4C',
-  orange: '#E4964D',
-  yellow: '#F2CA59',
-  grey: '#3A3A3A',
-  darkGreyishCyan: '#92A7AA',
-  lightGrey: '#E1E1E1',
-  lighterGrey: '#E0E0E0',
-  offWhite: '#EDEDED',
-  softBlue: '#68b2fc',
-  maxWidth: '1100px',
-  bs: '0 12px 24px 0 rgba(0, 0, 0, 0.09)',
-  spacingUnit: '0.8rem',
-  spacingUnits: num => `${0.8 * num}rem`,
-  mobileWidth: '600px',
-  ipadWidth: '1024px',
-};
+// const darkTheme = {
+//   bodyColour: '#262730',
+//   fontColour: '#EDEDED',
+//   red: '#E44847',
+//   moderateRed: '#D46F58',
+//   black: '#393939',
+//   darkBlue: '#2B3B4C',
+//   orange: '#E4964D',
+//   yellow: '#F2CA59',
+//   grey: '#3A3A3A',
+//   darkGreyishCyan: '#92A7AA',
+//   lightGrey: '#E1E1E1',
+//   lighterGrey: '#E0E0E0',
+//   offWhite: '#EDEDED',
+//   softBlue: '#68b2fc',
+//   maxWidth: '1100px',
+//   bs: '0 12px 24px 0 rgba(0, 0, 0, 0.09)',
+//   spacingUnit: '0.8rem',
+//   spacingUnits: num => `${0.8 * num}rem`,
+//   mobileWidth: '600px',
+//   ipadWidth: '1024px',
+// };
 
 class Page extends React.Component {
-  state = {
-    prefersDarkMode: false,
-  };
-
-  componentDidMount() {
-    let prefersDarkMode;
-    if (typeof window != 'undefined') {
-      prefersDarkMode =
-        window &&
-        window.matchMedia &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-      this.setState({ prefersDarkMode });
-    }
-  }
   render() {
     return (
-      <ThemeProvider theme={this.state.prefersDarkMode ? theme : theme}>
+      <ThemeProvider theme={theme}>
         <>
           <GlobalStyle />
           <StyledPage>
             <Meta />
             <Header />
-            <Inner>
-              {React.cloneElement(this.props.children, {
-                prefersDarkMode: this.state.prefersDarkMode,
-              })}
-            </Inner>
+            <Inner>{this.props.children}</Inner>
           </StyledPage>
         </>
       </ThemeProvider>

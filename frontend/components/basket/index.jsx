@@ -1,13 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import BasketIcon from '../../static/svg/basket.svg';
 
+// This just says basket until I sort out svgs in Jest
 function Basket() {
-  return (
-    <Button>
-      <BasketIcon />
-    </Button>
-  );
+  return <Button>Basket</Button>;
 }
 
 const Button = styled.button`
