@@ -24,6 +24,10 @@ function Splash(props) {
   const { data, error, loading } = useQuery(SPLASH_ITEMS_QUERY);
   if (loading) return <LoadingSpinner />;
 
+  if (error) {
+    return <p>Error...</p>;
+  }
+
   if (!data.items) return null;
 
   const splashItem = data.items[0];

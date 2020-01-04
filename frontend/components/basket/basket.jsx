@@ -1,15 +1,36 @@
+// External
 import React from 'react';
+import { useQuery, useMutation } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
 
+// Components
 import BasketHeader from './basket-header';
 
+// Styles
 import { Button, StyledBasket } from './styles/basket.styles';
 
-// This just says basket until I sort out svgs in Jest
+export const LOCAL_STATE_QUERY = gql`
+  query {
+    basketOpen @client
+  }
+`;
+
+export const TOGGLE_BASKET_MUTATION = gql`
+  mutation {
+    toggleBasket @client
+  }
+`;
+
 function Basket() {
-  const [basketOpen, setBasketOpen] = React.useState(false);
+  const { data, error, loading } = useQuery(LOCAL_STATE_QUERY);
+  const [toggleBasket, { mutationError, mutationLoading }] = useMutation(
+    TOGGLE_BASKET_MUTATION
+  );
+
+  const { basketOpen } = data;
 
   const handleButtonClick = () => {
-    setBasketOpen(!basketOpen);
+    toggleBasket(!basketOpen);
   };
   return (
     <>
