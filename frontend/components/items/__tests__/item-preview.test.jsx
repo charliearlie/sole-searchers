@@ -2,7 +2,9 @@ import ItemPreview from '../item-preview';
 import { render } from '../../../util/test-utils/with-providers';
 
 const itemData = {
-  brand: 'Nike',
+  brand: {
+    name: 'Nike',
+  },
   images:
     'https://res.cloudinary.com/recipeze/image/upload/v1566837816/Sole%20Searchers/img02.jpg',
   price: 120,
@@ -15,7 +17,7 @@ describe('<ItemPreview />', () => {
     const { getByText } = render(<ItemPreview item={itemData} />);
 
     expect(getByText(itemData.title)).toBeInTheDocument();
-    expect(getByText(itemData.brand)).toBeInTheDocument();
+    expect(getByText(itemData.brand.name)).toBeInTheDocument();
     expect(getByText(`£${itemData.price}`)).toBeInTheDocument();
   });
 });

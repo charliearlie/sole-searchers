@@ -9,7 +9,9 @@ const wait = require('waait');
 const returnedItems = [
   {
     id: 'ck047mnoyte1m0b53tf58kd4q',
-    brand: 'Nike',
+    brand: {
+      name: 'Nike',
+    },
     title: 'The 10: Air Max 90 "Off White"',
     previewImage:
       'https://res.cloudinary.com/recipeze/image/upload/t_Site-preview/v1567537925/Sole%20Searchers/806237_01.jpg',
@@ -19,7 +21,9 @@ const returnedItems = [
   },
   {
     id: 'ck047d81wtcjr0b5361bkfzez',
-    brand: 'Adidas',
+    brand: {
+      name: 'Adidas',
+    },
     title: 'Yeezy Boost 700 "Inertia"',
     previewImage:
       'https://res.cloudinary.com/recipeze/image/upload/t_Site-preview/v1567537370/Sole%20Searchers/135739_01.jpg',
@@ -29,7 +33,9 @@ const returnedItems = [
   },
   {
     id: 'ck04758w5ta700b53i8f7m29s',
-    brand: 'Nike',
+    brand: {
+      name: 'Nike',
+    },
     title: "Air Max 1 SE 'Windbreaker'",
     previewImage:
       'https://res.cloudinary.com/recipeze/image/upload/t_Site-preview/v1567537024/Sole%20Searchers/147326_01.jpg',
@@ -39,7 +45,9 @@ const returnedItems = [
   },
   {
     id: 'ck047h8r1tdcx0b5348nftcfw',
-    brand: 'Air Jordan',
+    brand: {
+      name: 'Air Jordan',
+    },
     title: 'Air Jordan 4 Retro "Green Glow"',
     previewImage:
       'https://res.cloudinary.com/recipeze/image/upload/t_Site-preview/v1567537619/Sole%20Searchers/011792_01.jpg',
