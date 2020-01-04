@@ -1,4 +1,8 @@
-import { PrimaryButton, SecondaryButton, LinkButton } from './button-styles';
+import {
+  PrimaryButton,
+  SecondaryButton,
+  LinkButton,
+} from './styles/button.styles';
 
 const buttonMap = {
   primary: PrimaryButton,

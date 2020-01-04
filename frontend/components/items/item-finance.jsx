@@ -1,10 +1,17 @@
-import styled from 'styled-components';
+// External
 import Link from 'next/link';
+
+// Services
 import {
   getItemPrice,
   appendCurrencySymbol,
 } from '../../services/item-service';
+
+// Hooks
 import useCurrency from '../../hooks/use-currency';
+
+// Styles
+import { Credit, Price } from './styles/item-finance.styles';
 
 function ItemFinance({ financeDuration = 12, price }) {
   const [currencyConfig] = useCurrency();
@@ -30,16 +37,5 @@ function ItemFinance({ financeDuration = 12, price }) {
     </>
   );
 }
-
-const Price = styled.span`
-  font-weight: bold;
-`;
-
-const Credit = styled.a`
-  color: ${({ theme }) => theme.softBlue};
-  cursor: pointer;
-  font-size: 12px;
-  text-decoration: underline;
-`;
 
 export default ItemFinance;
