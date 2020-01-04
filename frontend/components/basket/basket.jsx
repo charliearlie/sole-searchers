@@ -31,7 +31,7 @@ function Basket() {
   const isBasketOpen = data && data.basketOpen;
 
   const handleButtonClick = () => {
-    toggleBasket(!basketOpen);
+    toggleBasket(!isBasketOpen);
   };
   return (
     <>
