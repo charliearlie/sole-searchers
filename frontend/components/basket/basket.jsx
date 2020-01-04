@@ -27,7 +27,8 @@ function Basket() {
     TOGGLE_BASKET_MUTATION
   );
 
-  const { basketOpen } = data;
+  // Temporary until I work out client directives in mocked client side queries
+  const isBasketOpen = data && data.basketOpen;
 
   const handleButtonClick = () => {
     toggleBasket(!basketOpen);
@@ -35,7 +36,7 @@ function Basket() {
   return (
     <>
       <Button onClick={handleButtonClick}>Basket</Button>
-      <StyledBasket open={basketOpen}>
+      <StyledBasket open={isBasketOpen}>
         <BasketHeader />
         Basket
         <Button onClick={handleButtonClick}>Basket</Button>
