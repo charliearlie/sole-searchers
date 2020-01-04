@@ -11,7 +11,9 @@ import LoadingSpinner from '../loading-spinner';
 export const ITEM_QUERY = gql`
   query ITEM_QUERY($slug: String!) {
     item(where: { slug: $slug }) {
-      brand
+      brand {
+        name
+      }
       images
       price
       title
@@ -31,6 +33,7 @@ function ItemInfo({ itemSlug }) {
   if (loading) return <LoadingSpinner />;
 
   if (data) {
+    console.log(data);
     const { item } = data;
     return (
       <Wrapper>
@@ -41,7 +44,7 @@ function ItemInfo({ itemSlug }) {
           <img alt={`Image of ${item.title}`} src={item.images} />
         </div>
         <div className="info">
-          <h3>{item.brand}</h3>
+          <h3>{item.brand.name}</h3>
           <h2>{item.title}</h2>
           <ItemFinance price={item.price} />
           <Link href="/deliveries-and-returns">

@@ -14,7 +14,7 @@ function ItemPreview(props) {
           <img loading="lazy" src={props.item.previewImage} />
         </LazyLoad>
 
-        <h4>{props.item.brand}</h4>
+        <h4>{props.item.brand.name}</h4>
         <span className="title">{props.item.title}</span>
         <span>{getItemPrice(props.item.price, currencyConfig)}</span>
       </Preview>

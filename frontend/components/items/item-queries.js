@@ -4,7 +4,9 @@ const ITEMS_QUERY = gql`
   query ITEMS_QUERY($first: Int) {
     items(first: $first) {
       id
-      brand
+      brand {
+        name
+      }
       title
       previewImage
       price
@@ -17,7 +19,9 @@ const POPULAR_ITEMS_QUERY = gql`
   query ITEMS_QUERY($first: Int) {
     items(first: $first, orderBy: popularity_DESC) {
       id
-      brand
+      brand {
+        name
+      }
       title
       previewImage
       price

@@ -6,7 +6,9 @@ import ItemInfo, { ITEM_QUERY } from '../item-info';
 const wait = require('waait');
 
 const itemData = {
-  brand: 'Nike',
+  brand: {
+    name: 'Nike',
+  },
   images:
     'https://res.cloudinary.com/recipeze/image/upload/v1566837816/Sole%20Searchers/img02.jpg',
   price: 120,

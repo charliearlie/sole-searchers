@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
+import Link from 'next/link';
 
 export const POPULAR_BRANDS_QUERY = gql`
   query POPULAR_BRANDS_QUERY {
@@ -18,9 +19,9 @@ const SubNavigation = () => {
   return (
     <Nav>
       {brands.map(brand => (
-        <a key={brand.name} href="#">
+        <Link key={brand.name} href={`/brand/${brand.name}`}>
           {brand.name}
-        </a>
+        </Link>
       ))}
     </Nav>
   );
