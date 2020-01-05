@@ -5,7 +5,9 @@ export const Nav = styled.nav`
   padding: 10px 0;
   /* box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.19); */
 
-  > * {
+  > a,
+  button,
+  span {
     color: ${({ theme }) => theme.fontColour};
     font-size: 1.2rem;
     margin-right: 16px;
