@@ -23,7 +23,7 @@ export const NavigationWrapper = styled.div`
     cursor: pointer;
     font-family: 'Anton', 'Sans-serif';
     font-size: 30px;
-    letter-spacing: 7px;
+    letter-spacing: 1px;
     transform: skew(-5deg);
   }
 
