@@ -1,8 +1,12 @@
 import styled from 'styled-components';
 
 export const Button = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
   padding: ${props =>
-    props.padding ? `${props.padding}px` : theme.spacingUnit};
+    props.padding ? `${props.padding}px` : props.theme.spacingUnit};
   font-size: 1.6rem;
   font-weight: bold;
   color: black;

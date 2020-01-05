@@ -33,7 +33,7 @@ function Splash(props) {
       <div className="info">
         <h1>Popular drops</h1>
         <h2>{splashItem.title}</h2>
-        <Button padding={25} borderRadius={0} buttonType="secondary">
+        <Button borderRadius={0} buttonType="secondary">
           SHOP NOW
         </Button>
       </div>
