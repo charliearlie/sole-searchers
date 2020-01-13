@@ -41,6 +41,7 @@ type Query {
     first: Int
   ): [Item]!
   item(where: ItemWhereUniqueInput!): Item
+  brand(where: BrandWhereUniqueInput!): Brand
 }
 
 type User {
@@ -56,4 +57,5 @@ type Brand {
   logo: String
   name: String
   popularity: Int
+  website: String
 }

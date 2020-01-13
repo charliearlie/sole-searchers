@@ -13,6 +13,7 @@ const Query = {
     );
   },
   brands: forwardTo("db"),
+  brand: forwardTo("db"),
   items: forwardTo("db"),
   item: forwardTo("db")
 };

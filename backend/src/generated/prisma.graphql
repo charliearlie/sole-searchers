@@ -1,5 +1,5 @@
 # source: https://eu1.prisma.sh/charlie-waite-c4907e/sole-searchers/dev
-# timestamp: Fri Dec 06 2019 21:42:43 GMT+0000 (Greenwich Mean Time)
+# timestamp: Sun Jan 05 2020 18:40:24 GMT+0000 (Greenwich Mean Time)
 
 type AggregateBrand {
   count: Int!
@@ -354,6 +354,7 @@ input BrandWhereInput {
 
 input BrandWhereUniqueInput {
   id: ID
+  name: String
 }
 
 type Category implements Node {
