@@ -21,6 +21,7 @@ export const Nav = styled.nav`
     cursor: pointer;
     outline: none;
     padding: 0;
+    z-index: 1;
   }
 
   @media (max-width: 600px) {

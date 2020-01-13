@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const Button = styled.button`
   height: 20px;
-  width: 20px;
 `;
 
 export const StyledBasket = styled.div`

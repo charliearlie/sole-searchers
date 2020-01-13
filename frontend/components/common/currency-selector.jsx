@@ -44,6 +44,7 @@ const Menu = styled.div`
   padding: 10px;
   top: 50px;
   width: 60px;
+  z-index: 2;
 
   &:before {
     content: '';
