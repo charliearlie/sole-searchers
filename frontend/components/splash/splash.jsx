@@ -31,8 +31,7 @@ function Splash(props) {
 
   if (!data.items) return null;
 
-  const splashItem = data.items[1];
-  const sItem = data.items[0];
+  const splashItem = data.items[0];
 
   return (
     <SplashWrapper href={`item/${splashItem.slug}`}>
