@@ -23,7 +23,7 @@ export const SPLASH_ITEMS_QUERY = gql`
 
 function Splash(props) {
   const { data, error, loading } = useQuery(SPLASH_ITEMS_QUERY);
-  if (loading) return <LoadingSpinner />;
+  if (loading) return <p>Loading..</p>;
 
   if (error) {
     return <p>Error...</p>;
