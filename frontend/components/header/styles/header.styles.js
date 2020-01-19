@@ -33,8 +33,7 @@ export const NavigationWrapper = styled.div`
 
   @media (max-width: 600px) {
     .logo {
-      font-size: 15px;
-      letter-spacing: 2px;
+      font-size: 22px;
     }
   }
 `;

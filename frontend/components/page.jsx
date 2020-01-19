@@ -58,7 +58,11 @@ class Page extends React.Component {
           <StyledPage>
             <Meta />
             <Header />
-            <Inner>{this.props.children}</Inner>
+            {this.props.children.type.name === 'Home' ? (
+              <>{this.props.children}</>
+            ) : (
+              <Inner>{this.props.children}</Inner>
+            )}
           </StyledPage>
         </>
       </ThemeProvider>
@@ -75,7 +79,7 @@ const StyledPage = styled.div`
   color: ${props => props.theme.fontColour};
 `;
 
-const Inner = styled.div`
+export const Inner = styled.div`
   margin: auto;
   max-width: ${props => props.theme.maxWidth};
   padding-top: 106px;
