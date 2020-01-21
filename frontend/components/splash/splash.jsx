@@ -13,7 +13,6 @@ export const SPLASH_ITEMS_QUERY = gql`
     items(where: { splashImage_not: "" }) {
       id
       previewImage
-      price
       title
       splashImage
       slug
