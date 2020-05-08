@@ -21,7 +21,7 @@ const theme = {
   maxWidth: '1100px',
   bs: '0 12px 24px 0 rgba(0, 0, 0, 0.09)',
   spacingUnit: '0.8rem',
-  spacingUnits: num => `${0.8 * num}rem`,
+  spacingUnits: (num) => `${0.8 * num}rem`,
   mobileWidth: '600px',
   ipadWidth: '1024px',
 };
@@ -75,13 +75,13 @@ class Page extends React.Component {
  */
 
 const StyledPage = styled.div`
-  background: ${props => props.theme.bodyColour};
-  color: ${props => props.theme.fontColour};
+  background: ${(props) => props.theme.bodyColour};
+  color: ${(props) => props.theme.fontColour};
 `;
 
 export const Inner = styled.div`
   margin: auto;
-  max-width: ${props => props.theme.maxWidth};
+  max-width: ${(props) => props.theme.maxWidth};
   padding-top: 106px;
 
   p::selection,
@@ -96,8 +96,6 @@ export const Inner = styled.div`
 `;
 
 const GlobalStyle = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css?family=Anton&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
 
 html {
   box-sizing: border-box;

@@ -11,14 +11,14 @@ export const SplashWrapper = styled.a`
   .image-container {
     background: #634c96;
     flex-grow: 2;
-    height: 600px;
+    height: 570px;
     max-width: 100%;
     padding-top: 20px;
     img {
       height: 100%;
       width: 100%;
       object-fit: contain;
-      transform: rotate(30deg) scale(1) translateY(-132px) translateX(30px);
+      transform: rotate(30deg) scale(0.6) translateY(-50px) translateX(36px);
       transition: 0.2s ease;
     }
 
@@ -58,7 +58,7 @@ export const SplashWrapper = styled.a`
 
     .image-container {
       img {
-        transform: rotate(30deg) scale(1) translateY(-132px) translateX(-20px);
+        transform: rotate(30deg) scale(0.7) translateY(-10px) translateX(30px);
         transition: 0.2s ease;
       }
     }
@@ -69,9 +69,9 @@ export const SplashWrapper = styled.a`
     justify-content: center;
 
     .image-container {
-      height: 350px;
+      height: 290px;
       img {
-        transform: rotate(30deg) scale(1) translateY(-35px) translateX(30px);
+        transform: rotate(30deg) scale(0.8) translateY(4px) translateX(13px);
         transition: 0.2s ease;
       }
 
