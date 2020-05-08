@@ -1,6 +1,7 @@
 import { MockedProvider } from '@apollo/react-testing';
 import { GraphQLError } from 'graphql';
 import { POPULAR_BRANDS_QUERY } from '../sub-navigation';
+import { LOCAL_STATE_QUERY } from '../../basket/basket';
 import { act, render } from '../../../util/test-utils/with-providers';
 import Header from '../header';
 
@@ -47,12 +48,35 @@ const mocks = [
       },
     },
   },
+  {
+    request: {
+      query: LOCAL_STATE_QUERY,
+    },
+    result: {
+      data: {
+        basketOpen: false,
+      },
+    },
+  },
 ];
+
+const resolvers = {
+  toggleBasket: (_, variables, { cache }) => {
+    const { basketOpen } = cache.readQuery({
+      query: LOCAL_STATE_QUERY,
+    });
+    const data = {
+      data: { basketOpen: !basketOpen },
+    };
+    cache.writeData(data);
+    return data;
+  },
+};
 
 describe('Header', () => {
   test('it should render the site title', () => {
     const { getByText } = render(
-      <MockedProvider mocks={mocks} addTypename={false}>
+      <MockedProvider mocks={mocks} resolvers={resolvers} addTypename={false}>
         <Header />
       </MockedProvider>
     );
@@ -61,7 +85,7 @@ describe('Header', () => {
 
   test('it should render a login button', () => {
     const { getByText } = render(
-      <MockedProvider mocks={mocks} addTypename={false}>
+      <MockedProvider mocks={mocks} resolvers={resolvers} addTypename={false}>
         <Header />
       </MockedProvider>
     );
@@ -70,7 +94,7 @@ describe('Header', () => {
 
   test('it should render the currency selector', () => {
     const { getByText } = render(
-      <MockedProvider mocks={mocks} addTypename={false}>
+      <MockedProvider mocks={mocks} resolvers={resolvers} addTypename={false}>
         <Header />
       </MockedProvider>
     );
@@ -79,7 +103,7 @@ describe('Header', () => {
 
   test('it initially renders loading... on the sub nav', async () => {
     const { getByText } = render(
-      <MockedProvider mocks={mocks} addTypename={false}>
+      <MockedProvider mocks={mocks} resolvers={resolvers} addTypename={false}>
         <Header />
       </MockedProvider>
     );
@@ -88,7 +112,7 @@ describe('Header', () => {
 
   test('it renders a list of brands', async () => {
     const { getByText } = render(
-      <MockedProvider mocks={mocks} addTypename={false}>
+      <MockedProvider mocks={mocks} resolvers={resolvers} addTypename={false}>
         <Header />
       </MockedProvider>
     );
@@ -102,7 +126,11 @@ describe('Header', () => {
     newMocks[0].error = [new GraphQLError('Error!')];
 
     const { getByText } = render(
-      <MockedProvider mocks={newMocks} addTypename={false}>
+      <MockedProvider
+        mocks={newMocks}
+        resolvers={resolvers}
+        addTypename={false}
+      >
         <Header />
       </MockedProvider>
     );

@@ -5,7 +5,7 @@ import CurrencySelector from '../common/currency-selector';
 // Styles
 import { Line, Nav } from './styles/navigation.styles';
 
-const Navigation = () => {
+const Navigation = (): JSX.Element => {
   return (
     <Nav>
       <CurrencySelector />

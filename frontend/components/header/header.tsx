@@ -1,7 +1,7 @@
 // External
 import Link from 'next/link';
 import Router from 'next/router';
-import NProgress from 'nprogress';
+import * as NProgress from 'nprogress';
 
 // Components
 import Subheader from './subheader';
@@ -10,19 +10,23 @@ import Navigation from './navigation';
 // Styles
 import { NavigationWrapper, StyledHeader } from './styles/header.styles';
 
-Router.onRouteChangeStart = () => {
-  NProgress.start();
-};
+if (typeof window !== 'undefined') {
+  NProgress.configure({ showSpinner: false });
 
-Router.onRouteChangeComplete = () => {
-  NProgress.done();
-};
+  Router.events.on('routeChangeStart', () => {
+    NProgress.start();
+  });
 
-Router.onRouteChangeError = () => {
-  NProgress.done();
-};
+  Router.events.on('routeChangeComplete', () => {
+    NProgress.done();
+  });
 
-const Header = () => {
+  Router.events.on('routeChangeError', () => {
+    NProgress.done();
+  });
+}
+
+const Header = (): JSX.Element => {
   return (
     <>
       <StyledHeader>

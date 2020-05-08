@@ -14,14 +14,14 @@ export const POPULAR_BRANDS_QUERY = gql`
   }
 `;
 
-const SubNavigation = () => {
+const SubNavigation = (): JSX.Element => {
   const { data, error, loading } = useQuery(POPULAR_BRANDS_QUERY);
   if (error) return <span>Error!!</span>;
-  if (loading) return <span>Loading...</span>;
+  if (loading) return null;
   const { brands } = data;
   return (
     <Nav>
-      {brands.map(brand => (
+      {brands.map((brand) => (
         <Link key={brand.name} href={`/brand/${brand.name}`}>
           {brand.name}
         </Link>
