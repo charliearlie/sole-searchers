@@ -101,15 +101,6 @@ describe('Header', () => {
     expect(getByText('GBP')).toBeInTheDocument();
   });
 
-  test('it initially renders loading... on the sub nav', async () => {
-    const { getByText } = render(
-      <MockedProvider mocks={mocks} resolvers={resolvers} addTypename={false}>
-        <Header />
-      </MockedProvider>
-    );
-    expect(getByText('Loading...')).toBeInTheDocument();
-  });
-
   test('it renders a list of brands', async () => {
     const { getByText } = render(
       <MockedProvider mocks={mocks} resolvers={resolvers} addTypename={false}>
@@ -118,7 +109,9 @@ describe('Header', () => {
     );
 
     await act(() => wait(0));
-    brands.forEach(brand => expect(getByText(brand.name)).toBeInTheDocument());
+    brands.forEach((brand) =>
+      expect(getByText(brand.name)).toBeInTheDocument()
+    );
   });
 
   test('it handles an error', async () => {
