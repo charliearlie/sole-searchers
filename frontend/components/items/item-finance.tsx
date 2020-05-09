@@ -13,7 +13,15 @@ import useCurrency from '../../hooks/use-currency';
 // Styles
 import { Credit, Price } from './styles/item-finance.styles';
 
-function ItemFinance({ financeDuration = 12, price }) {
+interface ItemFinanceProps {
+  financeDuration: number;
+  price: number;
+}
+
+const ItemFinance: React.FC<ItemFinanceProps> = ({
+  financeDuration = 12,
+  price,
+}): JSX.Element => {
   const [currencyConfig] = useCurrency();
   const getItemMonthlyPayments = (price, duration = 12) => {
     const monthlyPrice = appendCurrencySymbol(
@@ -36,6 +44,6 @@ function ItemFinance({ financeDuration = 12, price }) {
       )}
     </>
   );
-}
+};
 
 export default ItemFinance;

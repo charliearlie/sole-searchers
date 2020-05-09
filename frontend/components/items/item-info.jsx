@@ -38,7 +38,6 @@ function ItemInfo({ itemSlug }) {
   if (loading) return <LoadingSpinner />;
 
   if (data) {
-    console.log(data);
     const { item } = data;
     return (
       <Wrapper>
