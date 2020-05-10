@@ -38,6 +38,8 @@ type Brand {
   name: String! @unique
   popularity: Int
   website: String
+  isSubBrand: Boolean
+  parent: Brand
 }
 
 type Collection {
@@ -49,6 +51,7 @@ type Collection {
 type Item {
   id: ID! @id
   brand: Brand
+  collection: Collection
   colour: String!
   createdAt: DateTime! @createdAt
   darkImage: String

@@ -1,5 +1,5 @@
 # source: https://eu1.prisma.sh/charlie-waite-c4907e/sole-searchers/dev
-# timestamp: Sun Jan 05 2020 18:40:24 GMT+0000 (Greenwich Mean Time)
+# timestamp: Sat May 09 2020 23:08:45 GMT+0100 (British Summer Time)
 
 type AggregateBrand {
   count: Int!
@@ -32,6 +32,8 @@ type Brand implements Node {
   name: String!
   popularity: Int
   website: String
+  isSubBrand: Boolean
+  parent: Brand
 }
 
 """A connection to a list of items."""
@@ -50,6 +52,8 @@ input BrandCreateInput {
   name: String!
   popularity: Int
   website: String
+  isSubBrand: Boolean
+  parent: BrandCreateOneInput
 }
 
 input BrandCreateOneInput {
@@ -77,6 +81,8 @@ enum BrandOrderByInput {
   popularity_DESC
   website_ASC
   website_DESC
+  isSubBrand_ASC
+  isSubBrand_DESC
 }
 
 type BrandPreviousValues {
@@ -85,6 +91,7 @@ type BrandPreviousValues {
   name: String!
   popularity: Int
   website: String
+  isSubBrand: Boolean
 }
 
 type BrandSubscriptionPayload {
@@ -129,6 +136,8 @@ input BrandUpdateDataInput {
   name: String
   popularity: Int
   website: String
+  isSubBrand: Boolean
+  parent: BrandUpdateOneInput
 }
 
 input BrandUpdateInput {
@@ -136,6 +145,8 @@ input BrandUpdateInput {
   name: String
   popularity: Int
   website: String
+  isSubBrand: Boolean
+  parent: BrandUpdateOneInput
 }
 
 input BrandUpdateManyMutationInput {
@@ -143,6 +154,7 @@ input BrandUpdateManyMutationInput {
   name: String
   popularity: Int
   website: String
+  isSubBrand: Boolean
 }
 
 input BrandUpdateOneInput {
@@ -350,6 +362,11 @@ input BrandWhereInput {
 
   """All values not ending with the given string."""
   website_not_ends_with: String
+  isSubBrand: Boolean
+
+  """All values that are not equal to given value."""
+  isSubBrand_not: Boolean
+  parent: BrandWhereInput
 }
 
 input BrandWhereUniqueInput {
@@ -589,6 +606,11 @@ input CollectionCreateInput {
   brand: BrandCreateOneInput
 }
 
+input CollectionCreateOneInput {
+  create: CollectionCreateInput
+  connect: CollectionWhereUniqueInput
+}
+
 """An edge in a connection."""
 type CollectionEdge {
   """The item at the end of the edge."""
@@ -647,6 +669,11 @@ input CollectionSubscriptionWhereInput {
   node: CollectionWhereInput
 }
 
+input CollectionUpdateDataInput {
+  name: String
+  brand: BrandUpdateOneInput
+}
+
 input CollectionUpdateInput {
   name: String
   brand: BrandUpdateOneInput
@@ -654,6 +681,20 @@ input CollectionUpdateInput {
 
 input CollectionUpdateManyMutationInput {
   name: String
+}
+
+input CollectionUpdateOneInput {
+  create: CollectionCreateInput
+  connect: CollectionWhereUniqueInput
+  disconnect: Boolean
+  delete: Boolean
+  update: CollectionUpdateDataInput
+  upsert: CollectionUpsertNestedInput
+}
+
+input CollectionUpsertNestedInput {
+  update: CollectionUpdateDataInput!
+  create: CollectionCreateInput!
 }
 
 input CollectionWhereInput {
@@ -763,6 +804,7 @@ enum Gender {
 type Item implements Node {
   id: ID!
   brand: Brand
+  collection: Collection
   colour: String!
   createdAt: DateTime!
   darkImage: String
@@ -810,6 +852,7 @@ input ItemCreateInput {
   stock: Int!
   title: String!
   brand: BrandCreateOneInput
+  collection: CollectionCreateOneInput
 }
 
 """An edge in a connection."""
@@ -935,6 +978,7 @@ input ItemUpdateInput {
   stock: Int
   title: String
   brand: BrandUpdateOneInput
+  collection: CollectionUpdateOneInput
 }
 
 input ItemUpdateManyMutationInput {
@@ -1529,6 +1573,7 @@ input ItemWhereInput {
   """All values greater than or equal the given value."""
   updatedAt_gte: DateTime
   brand: BrandWhereInput
+  collection: CollectionWhereInput
 }
 
 input ItemWhereUniqueInput {
@@ -1545,33 +1590,33 @@ scalar Long
 type Mutation {
   createUser(data: UserCreateInput!): User!
   createCategory(data: CategoryCreateInput!): Category!
-  createCollection(data: CollectionCreateInput!): Collection!
   createItem(data: ItemCreateInput!): Item!
+  createCollection(data: CollectionCreateInput!): Collection!
   createBrand(data: BrandCreateInput!): Brand!
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
   updateCategory(data: CategoryUpdateInput!, where: CategoryWhereUniqueInput!): Category
-  updateCollection(data: CollectionUpdateInput!, where: CollectionWhereUniqueInput!): Collection
   updateItem(data: ItemUpdateInput!, where: ItemWhereUniqueInput!): Item
+  updateCollection(data: CollectionUpdateInput!, where: CollectionWhereUniqueInput!): Collection
   updateBrand(data: BrandUpdateInput!, where: BrandWhereUniqueInput!): Brand
   deleteUser(where: UserWhereUniqueInput!): User
   deleteCategory(where: CategoryWhereUniqueInput!): Category
-  deleteCollection(where: CollectionWhereUniqueInput!): Collection
   deleteItem(where: ItemWhereUniqueInput!): Item
+  deleteCollection(where: CollectionWhereUniqueInput!): Collection
   deleteBrand(where: BrandWhereUniqueInput!): Brand
   upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
   upsertCategory(where: CategoryWhereUniqueInput!, create: CategoryCreateInput!, update: CategoryUpdateInput!): Category!
-  upsertCollection(where: CollectionWhereUniqueInput!, create: CollectionCreateInput!, update: CollectionUpdateInput!): Collection!
   upsertItem(where: ItemWhereUniqueInput!, create: ItemCreateInput!, update: ItemUpdateInput!): Item!
+  upsertCollection(where: CollectionWhereUniqueInput!, create: CollectionCreateInput!, update: CollectionUpdateInput!): Collection!
   upsertBrand(where: BrandWhereUniqueInput!, create: BrandCreateInput!, update: BrandUpdateInput!): Brand!
   updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
   updateManyCategories(data: CategoryUpdateManyMutationInput!, where: CategoryWhereInput): BatchPayload!
-  updateManyCollections(data: CollectionUpdateManyMutationInput!, where: CollectionWhereInput): BatchPayload!
   updateManyItems(data: ItemUpdateManyMutationInput!, where: ItemWhereInput): BatchPayload!
+  updateManyCollections(data: CollectionUpdateManyMutationInput!, where: CollectionWhereInput): BatchPayload!
   updateManyBrands(data: BrandUpdateManyMutationInput!, where: BrandWhereInput): BatchPayload!
   deleteManyUsers(where: UserWhereInput): BatchPayload!
   deleteManyCategories(where: CategoryWhereInput): BatchPayload!
-  deleteManyCollections(where: CollectionWhereInput): BatchPayload!
   deleteManyItems(where: ItemWhereInput): BatchPayload!
+  deleteManyCollections(where: CollectionWhereInput): BatchPayload!
   deleteManyBrands(where: BrandWhereInput): BatchPayload!
 }
 
@@ -1614,18 +1659,18 @@ enum Permission {
 type Query {
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
   categories(where: CategoryWhereInput, orderBy: CategoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Category]!
-  collections(where: CollectionWhereInput, orderBy: CollectionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Collection]!
   items(where: ItemWhereInput, orderBy: ItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Item]!
+  collections(where: CollectionWhereInput, orderBy: CollectionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Collection]!
   brands(where: BrandWhereInput, orderBy: BrandOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Brand]!
   user(where: UserWhereUniqueInput!): User
   category(where: CategoryWhereUniqueInput!): Category
-  collection(where: CollectionWhereUniqueInput!): Collection
   item(where: ItemWhereUniqueInput!): Item
+  collection(where: CollectionWhereUniqueInput!): Collection
   brand(where: BrandWhereUniqueInput!): Brand
   usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
   categoriesConnection(where: CategoryWhereInput, orderBy: CategoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CategoryConnection!
-  collectionsConnection(where: CollectionWhereInput, orderBy: CollectionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CollectionConnection!
   itemsConnection(where: ItemWhereInput, orderBy: ItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ItemConnection!
+  collectionsConnection(where: CollectionWhereInput, orderBy: CollectionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CollectionConnection!
   brandsConnection(where: BrandWhereInput, orderBy: BrandOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BrandConnection!
 
   """Fetches an object given its ID"""
@@ -1638,8 +1683,8 @@ type Query {
 type Subscription {
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
   category(where: CategorySubscriptionWhereInput): CategorySubscriptionPayload
-  collection(where: CollectionSubscriptionWhereInput): CollectionSubscriptionPayload
   item(where: ItemSubscriptionWhereInput): ItemSubscriptionPayload
+  collection(where: CollectionSubscriptionWhereInput): CollectionSubscriptionPayload
   brand(where: BrandSubscriptionWhereInput): BrandSubscriptionPayload
 }
 

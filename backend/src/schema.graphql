@@ -10,16 +10,17 @@ type Mutation {
   signIn(email: String!, password: String!): User!
   signOut: SuccessMessage
   createItem(
-    brand: String
     colour: String!
     description: String!
     discountedPrice: Int
     gender: Gender
     images: String
     material: String
+    popularity: Int
     previewImage: String
     price: Int!
     sizes: Int
+    slug: String
     splashImage: String
     stock: Int!
     title: String!
